@@ -5,14 +5,13 @@ import cn from 'classnames'
 import * as styles from './styles.css'
 import { Box } from '../Box'
 import { IUIComponent } from '../../utils/types'
-import { Atoms } from 'site/styles/sprinkles.css'
 
 const mapContainer = 'mapbox-container'
 
 // @ts-ignore
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
 
-interface IProps extends Atoms, IUIComponent {
+interface IProps extends IUIComponent {
   location: [number, number],
   title: string
   subtitle: string

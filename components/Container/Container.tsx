@@ -1,10 +1,9 @@
 import cn from 'classnames'
 import { Box } from '../Box'
-import { Atoms } from 'site/styles/sprinkles.css'
 import * as styles from './styles.css'
 import { IUIComponent } from '../../utils/types'
 
-interface IProps extends Atoms, IUIComponent {
+interface IProps extends IUIComponent {
   children: any
   gutter?: boolean
 }

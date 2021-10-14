@@ -18,3 +18,4 @@ export * from './components/Headings'
 
 export * from './utils'
 export * from './utils/gtm'
+export * from './utils/hooks'

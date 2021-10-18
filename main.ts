@@ -14,6 +14,7 @@ export { Spinner } from './components/Spinner'
 export { SubmitLeadForm } from './components/SubmitLeadForm'
 export { Loading } from './components/Loading'
 export { Page } from './components/Page'
+export { AnimateText } from './components/AnimateText'
 export * from './components/Headings'
 
 export * from './utils'

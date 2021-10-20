@@ -22,7 +22,13 @@ interface IProps extends Atoms {
 
 const defaultPlx = [{
   start: 'self',
-  end: 500,
+  startOffset: '25vh',
+  duration: '100vh',
+  properties: [{
+    startValue: 0,
+    endValue: -100,
+    property: "translateX"
+  }]
 }]
 
 export function RevealX({
@@ -42,7 +48,7 @@ export function RevealX({
       const width = height * ratio
       return {
         width,
-        height, // TODO: see if you can remove the 20
+        height,
       }
     // default return layout="square"
     } else {

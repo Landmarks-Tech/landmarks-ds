@@ -16,6 +16,7 @@ export { Loading } from './components/Loading'
 export { Page } from './components/Page'
 export { AnimateText } from './components/AnimateText'
 export { RevealX } from './components/RevealX'
+export { Section } from './components/Section'
 export * from './components/Headings'
 
 export * from './utils'

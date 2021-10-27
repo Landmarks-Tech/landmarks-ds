@@ -9,20 +9,22 @@ interface IProps extends IUIComponent {
   tablet?: keyof typeof styles.tabletSizeVariants
   laptop?: keyof typeof styles.laptopSizeVariants
   desktop?: keyof typeof styles.desktopSizeVariants
+  gutter?: keyof typeof styles.gridGutter
 }
 
 export function Col({
   children,
   className,
   mobile = '12',
-  tablet,
+  tablet = 'fit',
   laptop,
   desktop,
+  gutter = 'none',
   ...rest
 }: IProps) {
   const finalClassName = cn(
     className,
-    styles.col,
+    styles.colGutter[gutter],
     mobile && styles.mobileSizeVariants[mobile],
     tablet && styles.tabletSizeVariants[tablet],
     laptop && styles.laptopSizeVariants[laptop],

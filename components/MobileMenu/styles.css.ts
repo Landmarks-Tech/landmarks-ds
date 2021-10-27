@@ -92,3 +92,10 @@ export const defaultContent = style([
     color: 'white',
   })
 ])
+
+export const bottomChrome = style({
+  left: 0,
+  right: 0,
+  bottom: '-200px',
+  height: '200px',
+})

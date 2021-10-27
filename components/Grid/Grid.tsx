@@ -13,15 +13,13 @@ interface IProps extends IUIComponent {
 export function Grid({ children, className, gutter = 'none', ...rest }: IProps) {
   const decoratedChildren = Children.map(children, (child) => (
     cloneElement(child, {
-      gutter
+      gutter: child.props.gutter || gutter
     })
   ))
 
   return (
-    <Box overflow="hidden" position="relative">
-      <Box className={cn(styles.grid, styles.gridGutter[gutter], className)} {...rest}>
-        {decoratedChildren}
-      </Box>
+    <Box className={cn(styles.grid, styles.gridGutter[gutter], className)} {...rest}>
+      {decoratedChildren}
     </Box>
   )
 }

@@ -70,6 +70,11 @@ export function ToggleMobileMenu({
 
   return (
     <>
+      <Box
+        position="fixed"
+        background="chrome"
+        className={styles.bottomChrome} />
+
       <SimpleMobileMenu
         phone={phone}
         labels={labels}

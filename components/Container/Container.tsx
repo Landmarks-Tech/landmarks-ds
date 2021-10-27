@@ -12,6 +12,7 @@ export function Container({ children, className, gutter = true, ...rest }: IProp
   return (
     <Box
       padding="large"
+      overflow="hidden"
       position="relative" {...rest} className={cn(className, styles.container, {
       [styles.noGutter]: !gutter
     })}>{children}</Box>

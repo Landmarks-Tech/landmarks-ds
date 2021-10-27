@@ -61,5 +61,6 @@ export const gridGutter = styleVariants(vars.spacing, (gutter) => ({
 
 export const colGutter = styleVariants(vars.spacing, (gutter) => ({
   paddingLeft: gutter,
-  paddingRight: gutter
+  paddingRight: gutter,
+  marginBottom: gutter,
 }))

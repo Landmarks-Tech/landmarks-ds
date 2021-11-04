@@ -57,44 +57,46 @@ export function MobileSubMenu({ title, subtitle, children, actionLeft, actionRig
   )
 
   return (
-    <animated.div
-      className={styles.container}
-      style={{
-        bottom: `calc(-100vh + ${height + overwrites.MENU_HEIGHT + UNKNOWN_OFFSET_Y}px)`,
-        y
-      }}>
-      <animated.div {...bind()} className={styles.headerContainer}>
-        <Box
-          display="flex"
-          background="quaternary"
-          color="white"
-          textAlign="center"
-          justifyContent="center"
-          className={styles.stretch}>
-
-          {actionLeft}
-
+    <section className={styles.scrollPlaceholder}>
+      <animated.div
+        className={styles.container}
+        style={{
+          bottom: `calc(-100vh + ${height + overwrites.MENU_HEIGHT + UNKNOWN_OFFSET_Y}px)`,
+          y
+        }}>
+        <animated.div {...bind()} className={styles.headerContainer}>
           <Box
-            className={styles.header}
-            paddingY="small"
-            onClick={() => isOpen ? close() : open({ canceled: false })}>
-            <H3>{title}</H3>
-            <span>{subtitle}</span>
-          </Box>
+            display="flex"
+            background="quaternary"
+            color="white"
+            textAlign="center"
+            justifyContent="center"
+            className={styles.stretch}>
 
-          {actionRight}
+            {actionLeft}
+
+            <Box
+              className={styles.header}
+              paddingY="small"
+              onClick={() => isOpen ? close() : open({ canceled: false })}>
+              <H3>{title}</H3>
+              <span>{subtitle}</span>
+            </Box>
+
+            {actionRight}
+          </Box>
+        </animated.div>
+        <Box
+          background="secondary"
+          paddingY="large"
+          style={{ height: '100%' }}>
+          <Box
+            paddingX="large"
+            style={{ height: `${height - 50}px`, overflow: 'auto' }}>
+            {children}
+          </Box>
         </Box>
       </animated.div>
-      <Box
-        background="secondary"
-        paddingY="large"
-        style={{ height: '100%' }}>
-        <Box
-          paddingX="large"
-          style={{ height: `${height - 50}px`, overflow: 'auto' }}>
-          {children}
-        </Box>
-      </Box>
-    </animated.div>
+    </section>
   )
 }

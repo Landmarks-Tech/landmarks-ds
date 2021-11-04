@@ -17,14 +17,24 @@ export const container = style([
 ])
 
 export const stretch = style({
-  alignItems: 'stretch',
+  alignItems: 'center',
+  height: '73px',
 })
 
-export const headerContainer = style({
-  flex: 1,
-  touchAction: 'none',
-})
+export const headerContainer = style([
+  atoms({
+    overflow: 'hidden',
+  }),
+  {
+    flex: 1,
+    touchAction: 'none',
+  }
+])
 
 export const header = style({
   flex: 1,
+})
+
+export const scrollPlaceholder = style({
+  paddingTop: '73px',
 })

@@ -41,7 +41,7 @@ export function SimpleMobileMenu({ phone, children, className, labels = defaultL
         <Box display="flex">
           <Button
             component="a"
-            size="large"
+            size="medium"
             href={`tel:${phone}`}
             marginRight="small"
             className={classes.otherButtons}
@@ -51,7 +51,7 @@ export function SimpleMobileMenu({ phone, children, className, labels = defaultL
           </Button>
           <Button
             component="a"
-            size="large"
+            size="medium"
             title={labels.messageUsWhatsapp}
             href={`https://wa.me/${phone}`}
             onClick={() => logEvent(CUSTOM_EVENTS.CHAT_WHATSAPP)}

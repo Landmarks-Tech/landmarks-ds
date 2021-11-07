@@ -1,13 +1,16 @@
 import { ReactElement, Children, cloneElement } from 'react'
+import { IUIComponent } from '../../utils/types'
 
 import { Box } from "../Box"
+import { Container } from '../Container'
 import { LanguageSwitcher } from '../LanguageSwitcher'
 import * as styles from './styles.css'
 
-interface CommonProps {
+interface CommonProps extends IUIComponent {
   logo: ReactElement
   phone: string
   children: ReactElement | ReactElement[]
+  contained?: boolean
   extra?: ReactElement
 }
 
@@ -22,32 +25,40 @@ export function DesktopMenu({
   extra,
   logoPlacement = 'left',
   menuPlacement,
-  children
+  contained = true,
+  children,
+  ...rest
 }: Props) {
   if (logoPlacement === 'left') {
     return (
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center">
+      <Box component="section" {...rest}>
         <Box
+          component={contained ? Container : 'div'}
+          className={styles.noPadding}
           display="flex"
-          marginRight={{ laptop: menuPlacement === 'left' ? 'large' : 'none' }}>
-          {logo}
-          {extra}
-        </Box>
-        <Box style={{
-          ...(menuPlacement === 'left') && { marginRight: 'auto' },
-          ...(menuPlacement === 'right') && { marginLeft: 'auto' },
-        }}>
-          <div className={styles.hideOnMobile}>{children}</div>
-        </Box>
-        <Box
-          className={styles.hideOnMobile}
-          display="flex"
-          marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
-          <LanguageSwitcher />
-          <button>Suna</button>
+          justifyContent="space-between"
+          alignItems="center">
+          <Box
+            display="flex"
+            marginRight={{ laptop: menuPlacement === 'left' ? 'large' : 'none' }}>
+            {logo}
+            {extra}
+          </Box>
+          <Box
+            className={styles.hideOnMobile}
+            style={{
+              ...(menuPlacement === 'left') && { marginRight: 'auto' },
+              ...(menuPlacement === 'right') && { marginLeft: 'auto' },
+            }}>
+            {children}
+          </Box>
+          <Box
+            className={styles.hideOnMobile}
+            display="flex"
+            marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
+            <LanguageSwitcher />
+            <button>Suna</button>
+          </Box>
         </Box>
       </Box>
     )
@@ -58,33 +69,38 @@ export function DesktopMenu({
 
     return (
       <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center">
+        {...rest}>
         <Box
+          component={contained ? Container : 'div'}
+          className={styles.noPadding}
           display="flex"
-          marginX={{ laptop: 'xxlarge' }}
-          style={{
-            ...(menuPlacement === 'far') && { margin: 'auto' },
-            order: logoOrder,
-          }}>
-          {logo}
-          {extra}
+          justifyContent="center"
+          alignItems="center">
+          <Box
+            display="flex"
+            marginX={{ laptop: 'xxlarge' }}
+            style={{
+              ...(menuPlacement === 'far') && { margin: 'auto' },
+              order: logoOrder,
+            }}>
+            {logo}
+            {extra}
+          </Box>
+          {Children.map(children, (child, i) => cloneElement(child, {
+            className: styles.hideOnMobile,
+            style: {
+              order: i < logoOrder ? i : logoOrder + 1
+            }
+          }))}
+          <LanguageSwitcher
+            className={styles.hideOnMobile}
+            style={{ order: childCount }} />
+          <button
+            style={{ order: buttonOrder }}
+            className={styles.hideOnMobile}>
+            Suna
+          </button>
         </Box>
-        {Children.map(children, (child, i) => cloneElement(child, {
-          className: styles.hideOnMobile,
-          style: {
-            order: i < logoOrder ? i : logoOrder + 1
-          }
-        }))}
-        <LanguageSwitcher
-          className={styles.hideOnMobile}
-          style={{ order: childCount }} />
-        <button
-          style={{ order: buttonOrder }}
-          className={styles.hideOnMobile}>
-          Suna
-        </button>
       </Box>
     )
   }

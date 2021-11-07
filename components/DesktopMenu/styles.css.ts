@@ -10,3 +10,7 @@ export const hideOnMobile = style({
     }
   }
 })
+
+export const noPadding = style({
+  padding: 0,
+})

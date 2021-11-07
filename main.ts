@@ -18,6 +18,8 @@ export { AnimateText } from './components/AnimateText'
 export { RevealX } from './components/RevealX'
 export { Section } from './components/Section'
 export { MobileSubMenu } from './components/MobileSubMenu'
+export { DesktopMenu } from './components/DesktopMenu'
+export { LanguageSwitcher } from './components/LanguageSwitcher'
 export * from './components/Headings'
 
 export * from './utils'

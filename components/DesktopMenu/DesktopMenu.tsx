@@ -1,4 +1,5 @@
 import { ReactElement, Children, cloneElement } from 'react'
+import cn from 'classnames'
 import { IUIComponent } from '../../utils/types'
 
 import { Box } from "../Box"
@@ -10,6 +11,7 @@ interface CommonProps extends IUIComponent {
   logo: ReactElement
   phone: string
   children: ReactElement | ReactElement[]
+  sticky?: boolean
   contained?: boolean
   extra?: ReactElement
 }
@@ -25,13 +27,19 @@ export function DesktopMenu({
   extra,
   logoPlacement = 'left',
   menuPlacement,
+  sticky = false,
   contained = true,
   children,
+  className,
   ...rest
 }: Props) {
+  const cls = cn(className, {
+    [styles.stickyMenu]: sticky
+  })
+
   if (logoPlacement === 'left') {
     return (
-      <Box component="section" {...rest}>
+      <Box className={cls} component="section" {...rest}>
         <Box
           component={contained ? Container : 'div'}
           className={styles.noPadding}
@@ -68,8 +76,7 @@ export function DesktopMenu({
     const buttonOrder = childCount + 1
 
     return (
-      <Box
-        {...rest}>
+      <Box className={cls} component="section" {...rest}>
         <Box
           component={contained ? Container : 'div'}
           className={styles.noPadding}

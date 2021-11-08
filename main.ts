@@ -1,6 +1,6 @@
 export { Box } from './components/Box'
 export { ThemedSwiper } from './components/ThemedSwiper'
-export { SimpleMobileMenu, ToggleMobileMenu } from './components/MobileMenu'
+export { SimpleMobileMenu, ToggleMobileMenu, MenuItem } from './components/MobileMenu'
 export { Button } from './components/Button'
 export { Container } from './components/Container'
 export { Collapse } from './components/Collapse'

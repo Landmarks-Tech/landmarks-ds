@@ -1,11 +1,22 @@
 import { ReactElement, Children, cloneElement } from 'react'
 import cn from 'classnames'
-import { IUIComponent } from '../../utils/types'
+import { useTranslation } from 'next-i18next'
+import { FaPhoneAlt } from 'react-icons/fa'
 
+import { IUIComponent } from '../../utils/types'
 import { Box } from "../Box"
 import { Container } from '../Container'
 import { LanguageSwitcher } from '../LanguageSwitcher'
+import { Button } from '../Button'
 import * as styles from './styles.css'
+
+const defaultClasses = {
+  button: styles.mainButton,
+}
+
+const defaultLabels = {
+  callNow: 'callNow',
+}
 
 interface CommonProps extends IUIComponent {
   logo: ReactElement
@@ -14,6 +25,8 @@ interface CommonProps extends IUIComponent {
   sticky?: boolean
   contained?: boolean
   extra?: ReactElement
+  classes?: Partial<typeof defaultClasses>
+  labels?: Partial<typeof defaultLabels>
 }
 
 type ConditionalProps =
@@ -31,11 +44,22 @@ export function DesktopMenu({
   contained = true,
   children,
   className,
+  classes,
+  labels,
   ...rest
 }: Props) {
+  const { t } = useTranslation()
   const cls = cn(className, {
     [styles.stickyMenu]: sticky
   })
+  const mergedClasses = {
+    ...defaultClasses,
+    ...classes,
+  }
+  const mergedLabels = {
+    ...defaultLabels,
+    ...labels,
+  }
 
   if (logoPlacement === 'left') {
     return (
@@ -65,7 +89,7 @@ export function DesktopMenu({
             display="flex"
             marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
             <LanguageSwitcher />
-            <button>Suna</button>
+            <Button>{t(mergedLabels.callNow)}</Button>
           </Box>
         </Box>
       </Box>
@@ -81,7 +105,7 @@ export function DesktopMenu({
           component={contained ? Container : 'div'}
           className={styles.noPadding}
           display="flex"
-          justifyContent="center"
+          justifyContent={{ mobile: 'flex-start', laptop: 'center' }}
           alignItems="center">
           <Box
             display="flex"
@@ -94,7 +118,7 @@ export function DesktopMenu({
             {extra}
           </Box>
           {Children.map(children, (child, i) => cloneElement(child, {
-            className: styles.hideOnMobile,
+            className: cn(styles.hideOnMobile, child.props.className),
             style: {
               order: i < logoOrder ? i : logoOrder + 1
             }
@@ -102,11 +126,16 @@ export function DesktopMenu({
           <LanguageSwitcher
             className={styles.hideOnMobile}
             style={{ order: childCount }} />
-          <button
+          <Button
+            background="brand"
+            borderRadius="full"
+            size="medium"
+            display="flex"
             style={{ order: buttonOrder }}
-            className={styles.hideOnMobile}>
-            Suna
-          </button>
+            className={cn(styles.mainButton, mergedClasses?.button)}>
+            <Box component={FaPhoneAlt} marginRight="small" />
+            {t(mergedLabels.callNow)}
+          </Button>
         </Box>
       </Box>
     )

@@ -27,3 +27,13 @@ export const stickyMenu = style([
     right: 0,
   }
 ])
+
+export const mainButton = style({
+  display: 'none',
+
+  '@media': {
+    [breakpoints.xx_laptop]: {
+      display: 'flex',
+    }
+  }
+})

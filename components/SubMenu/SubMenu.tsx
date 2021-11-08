@@ -2,7 +2,7 @@ import { useState, ReactElement } from 'react'
 import { useSpring, animated, config } from 'react-spring'
 import { useDrag } from '@use-gesture/react'
 
-import { Box, H3 } from 'landmarks-ds'
+import { Box, H3, useWindowSize } from 'landmarks-ds'
 import * as styles from './styles.css'
 import { overwrites } from 'site/styles/theme.css'
 
@@ -16,7 +16,9 @@ interface IProps {
 
 const UNKNOWN_OFFSET_Y = 7
 
-export function MobileSubMenu({ title, subtitle, children, actionLeft, actionRight }: IProps) {
+export function SubMenu({ title, subtitle, children, actionLeft, actionRight }: IProps) {
+  const [windowWidth] = useWindowSize(true, false)
+  const isMobile = windowWidth < 991
   const [isOpen, setOpen] = useState(false)
   const height = 400
   const [{ y }, api] = useSpring(() => ({ y: height }))
@@ -57,46 +59,45 @@ export function MobileSubMenu({ title, subtitle, children, actionLeft, actionRig
   )
 
   return (
-    <section className={styles.scrollPlaceholder}>
-      <animated.div
-        className={styles.container}
-        style={{
-          bottom: `calc(-100vh + ${height + overwrites.MENU_HEIGHT + UNKNOWN_OFFSET_Y}px)`,
-          y
-        }}>
-        <animated.div {...bind()} className={styles.headerContainer}>
-          <Box
-            display="flex"
-            background="quaternary"
-            color="white"
-            textAlign="center"
-            justifyContent="center"
-            className={styles.stretch}>
-
-            {actionLeft}
-
-            <Box
-              className={styles.header}
-              paddingY="small"
-              onClick={() => isOpen ? close() : open({ canceled: false })}>
-              <H3>{title}</H3>
-              <span>{subtitle}</span>
-            </Box>
-
-            {actionRight}
-          </Box>
-        </animated.div>
+    <animated.div
+      className={styles.container}
+      style={isMobile ? {
+        bottom: `calc(-100vh + ${height + overwrites.MENU_HEIGHT + UNKNOWN_OFFSET_Y}px)`,
+        height: `calc(100vh + ${overwrites.MENU_HEIGHT}px)`,
+        y
+      } : {}}>
+      <animated.div {...bind()} className={styles.headerContainer}>
         <Box
-          background="secondary"
-          paddingY="large"
-          style={{ height: '100%' }}>
+          display="flex"
+          background="quaternary"
+          color="white"
+          textAlign="center"
+          justifyContent="center"
+          className={styles.stretch}>
+
+          {actionLeft}
+
           <Box
-            paddingX="large"
-            style={{ height: `${height - 50}px`, overflow: 'auto' }}>
-            {children}
+            className={styles.header}
+            paddingY="small"
+            onClick={() => isOpen ? close() : open({ canceled: false })}>
+            <H3>{title}</H3>
+            <span>{subtitle}</span>
           </Box>
+
+          {actionRight}
         </Box>
       </animated.div>
-    </section>
+      <Box
+        background="secondary"
+        paddingY="large"
+        style={{ height: '100%' }}>
+        <Box
+          paddingX="large"
+          style={isMobile ? { height: `${height - 50}px`, overflow: 'auto' } : {}}>
+          {children}
+        </Box>
+      </Box>
+    </animated.div>
   )
 }

@@ -12,7 +12,8 @@ export function Container({ children, className, gutter = true, ...rest }: IProp
   return (
     <Box
       padding="large"
-      overflow="hidden"
+      // breaks position: sticky for child elements https://www.designcise.com/web/tutorial/how-to-fix-issues-with-css-position-sticky-not-working#checking-if-an-ancestor-element-has-overflow-property-set
+      // overflow="hidden"
       position="relative" {...rest} className={cn(className, styles.container, {
       [styles.noGutter]: !gutter
     })}>{children}</Box>

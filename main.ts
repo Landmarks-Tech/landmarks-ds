@@ -20,6 +20,7 @@ export { Section } from './components/Section'
 export { SubMenu } from './components/SubMenu'
 export { DesktopMenu } from './components/DesktopMenu'
 export { LanguageSwitcher } from './components/LanguageSwitcher'
+export { Pill } from './components/Pill'
 export * from './components/Headings'
 
 export * from './utils'

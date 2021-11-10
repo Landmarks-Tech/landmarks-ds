@@ -11,6 +11,7 @@ interface IProps extends IUIComponent {
 }
 
 export function Grid({ children, className, gutter = 'none', ...rest }: IProps) {
+  // TODO: filter our 'false' children that cause errors
   const decoratedChildren = Children.map(children, (child) => (
     cloneElement(child, {
       gutter: child.props.gutter || gutter

@@ -1,12 +1,14 @@
 import { useState, ReactElement } from 'react'
 import { useSpring, animated, config } from 'react-spring'
 import { useDrag } from '@use-gesture/react'
+import cn from 'classnames'
 
 import { Box, H3, useWindowSize } from 'landmarks-ds'
 import * as styles from './styles.css'
 import { overwrites } from 'site/styles/theme.css'
+import { IUIComponent } from '../../utils/types'
 
-interface IProps {
+interface IProps extends IUIComponent {
   title: string
   subtitle: string
   children: ReactElement | ReactElement[]
@@ -16,7 +18,7 @@ interface IProps {
 
 const UNKNOWN_OFFSET_Y = 7
 
-export function SubMenu({ title, subtitle, children, actionLeft, actionRight }: IProps) {
+export function SubMenu({ title, subtitle, children, actionLeft, actionRight, className, ...rest }: IProps) {
   const [windowWidth] = useWindowSize(true, false)
   const isMobile = windowWidth < 991
   const [isOpen, setOpen] = useState(false)
@@ -60,7 +62,7 @@ export function SubMenu({ title, subtitle, children, actionLeft, actionRight }: 
 
   return (
     <animated.div
-      className={styles.container}
+      className={cn(styles.container, className)}
       style={isMobile ? {
         bottom: `calc(-100vh + ${height + overwrites.MENU_HEIGHT + UNKNOWN_OFFSET_Y}px)`,
         height: `calc(100vh + ${overwrites.MENU_HEIGHT}px)`,

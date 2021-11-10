@@ -12,6 +12,7 @@ const leftSlide = keyframes({
 export const selectRight = style({
   position: 'relative',
   zIndex: 0,
+  userSelect: 'none',
 
   selectors: {
     '&:after': {

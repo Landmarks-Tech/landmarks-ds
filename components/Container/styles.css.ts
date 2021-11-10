@@ -2,7 +2,8 @@ import { style } from "@vanilla-extract/css"
 import { breakpoints, overwrites } from "site/styles/theme.css"
 
 export const container = style({
-  margin: 'auto',
+  marginLeft: 'auto',
+  marginRight: 'auto',
 
   '@media': {
     [breakpoints.xxx_desktop]: {

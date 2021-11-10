@@ -34,7 +34,7 @@ export const tabletSizeVariants = styleVariants(widthScale, (scale) => ({
   '@media': {
     [breakpoints.x_tablet]: (scale === 'fit')
       ? { flex: 1 }
-      : { width: `${scale}%`, flex: 'auto' }
+      : { width: `${scale}%`, flex: 'none' }
   }
 }))
 
@@ -42,7 +42,7 @@ export const laptopSizeVariants = styleVariants(widthScale, (scale) => ({
   '@media': {
     [breakpoints.xx_laptop]: (scale === 'fit')
       ? { flex: 1 }
-      : { width: `${scale}%`, flex: 'auto' }
+      : { width: `${scale}%`, flex: 'none' }
   }
 }))
 
@@ -50,7 +50,7 @@ export const desktopSizeVariants = styleVariants(widthScale, (scale) => ({
   '@media': {
     [breakpoints.xxx_desktop]: (scale === 'fit')
       ? { flex: 1 }
-      : { width: `${scale}%`, flex: 'auto' }
+      : { width: `${scale}%`, flex: 'none' }
   }
 }))
 

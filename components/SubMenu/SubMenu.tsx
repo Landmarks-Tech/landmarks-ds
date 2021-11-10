@@ -1,4 +1,4 @@
-import { useState, ReactElement } from 'react'
+import { useState, useEffect, ReactElement, Children, cloneElement } from 'react'
 import { useSpring, animated, config } from 'react-spring'
 import { useDrag } from '@use-gesture/react'
 import cn from 'classnames'
@@ -97,7 +97,11 @@ export function SubMenu({ title, subtitle, children, actionLeft, actionRight, cl
         <Box
           paddingX="large"
           style={isMobile ? { height: `${height - 50}px`, overflow: 'auto' } : {}}>
-          {children}
+          {Children.map(children, (child) => {
+            return cloneElement(child, {
+              onClick: () => close(2)
+            })
+          })}
         </Box>
       </Box>
     </animated.div>

@@ -16,7 +16,7 @@ export function Col({
   children,
   className,
   mobile = '12',
-  tablet = 'fit',
+  tablet,
   laptop,
   desktop,
   gutter = 'none',

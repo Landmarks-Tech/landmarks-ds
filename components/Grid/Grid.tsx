@@ -6,6 +6,7 @@ import { IUIComponent } from '../../utils/types'
 
 interface IProps extends IUIComponent {
   children: any
+  // TODO: gutter greater than large causes overflow issues
   gutter?: keyof typeof styles.gridGutter
   className?: string
 }

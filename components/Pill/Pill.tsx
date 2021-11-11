@@ -5,7 +5,7 @@ import { Box } from "../Box"
 import * as styles from './styles.css'
 
 interface IProps extends IUIComponent {
-  children: string | ReactElement
+  children: any
 }
 
 export function Pill({ children, ...rest }: IProps) {

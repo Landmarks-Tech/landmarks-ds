@@ -30,8 +30,8 @@ const defaultClasses = {
 }
 
 interface IProps extends IUIComponent {
-  title: string
-  subtitle: string
+  title?: string
+  subtitle?: string
   logo: ReactElement
   phone: string
   children: any
@@ -95,22 +95,24 @@ export function ToggleMobileMenu({
 
       <animated.nav className={cn(styles.content, classes.content)} style={animation}>
         <Box
-          padding="large"
           marginBottom="xxlarge">
           <Link href="/" passHref>
             <Box
               component="a"
               title={labels.logoTitle}
               color="white"
+              display="block"
               style={{ textDecoration: 'none' }}>
               <Grid>
-                <Col mobile="1">
+                <Col mobile="fit">
                   {logo}
                 </Col>
-                <Col mobile="fit">
-                  <H2>{title}</H2>
-                  <small>{subtitle}</small>
-                </Col>
+                {title ? (
+                  <Col mobile="fit">
+                    <H2>{title}</H2>
+                    <small>{subtitle}</small>
+                  </Col>
+                ) : <></>}
               </Grid>
             </Box>
           </Link>

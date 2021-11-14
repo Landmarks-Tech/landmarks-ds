@@ -18,9 +18,10 @@ interface IProps extends IUIComponent {
   googleMapsLink: string
   startZoom?: number
   endZoom?: number
+  interactive?: boolean
 }
 
-export function MapboxMap({ location, title, subtitle, className, googleMapsLink, startZoom = 10, endZoom = 11, ...rest }: IProps) {
+export function MapboxMap({ location, title, subtitle, className, googleMapsLink, startZoom = 10, endZoom = 11, interactive = false, ...rest }: IProps) {
   const [mapInstance, setMapInstance] = useState<any>(null)
   const [initialView, setInitialView] = useState(true)
 
@@ -28,7 +29,7 @@ export function MapboxMap({ location, title, subtitle, className, googleMapsLink
     const map = new mapboxgl.Map({
       container: mapContainer,
       style: 'mapbox://styles/mapbox/light-v10',
-      interactive: false,
+      interactive,
       // scrollZoom: false,
       // @ts-ignore
       center: location,

@@ -1,37 +1,48 @@
-import { style, styleVariants } from "@vanilla-extract/css"
-import { breakpoints, vars } from "site/styles/theme.css"
-import { atoms } from "site/styles/sprinkles.css"
+import { breakpoints, vars } from 'site/styles/theme.css'
+import { style, styleVariants } from '@vanilla-extract/css'
+
+import { atoms } from 'site/styles/sprinkles.css'
+import { text } from 'site/components/Footer/styles.css'
 
 export const button = style([
   atoms({
     alignItems: 'center',
     textTransform: 'uppercase',
-    cursor: 'pointer',
+    cursor: 'pointer'
   }),
   {
     display: 'inline-flex', // centers icons with text
     fontFamily: vars.font.body,
-    textDecoration: 'none',
+    textDecoration: 'none'
   }
 ])
 
 export const variants = styleVariants({
   text: {
-    // color: vars.color.body,
+    // color: vars.color.primary,
+    backgroundColor: vars.color.transparent,
+    border: 'none'
   },
-  regular: {
-    color: vars.color.white,
-    backgroundColor: vars.color.secondary,
+  contained: {
+    // backgroundColor: vars.color.primary,
+    // color: vars.color.onOptional,
+    outline: 'none',
+    border: 'none'
   },
-  outlineWhite: {
-    border: '3px solid white',
-    backgroundColor: 'rgba(255,255,255, .3)',
-    color: vars.color.white,
+  outlined: {
+    backgroundColor: vars.color.transparent,
+    // color: vars.color.primary,
+    // border: `1px solid ${vars.color.primary}`,
+    borderRadius: vars.unit,
+    outline: 'none'
   },
-  underline: {
-    textAlign: 'left',
-    borderBottom: `2px solid ${vars.color.white}`,
-  },
+  underlined: {
+    backgroundColor: vars.color.transparent,
+    // color: vars.color.primary,
+    border: 'none',
+    // borderBottom: `1px solid ${vars.color.primary}`,
+    outline: 'none'
+  }
 })
 
 export const sizes = styleVariants({
@@ -41,7 +52,7 @@ export const sizes = styleVariants({
     '@media': {
       [breakpoints.xx_laptop]: {
         fontSize: '12px',
-        padding: '4px 8px',
+        padding: '4px 8px'
       }
     }
   },
@@ -52,7 +63,7 @@ export const sizes = styleVariants({
     '@media': {
       [breakpoints.xx_laptop]: {
         fontSize: '14px',
-        padding: '8px 15px',
+        padding: '8px 15px'
       }
     }
   },
@@ -63,16 +74,46 @@ export const sizes = styleVariants({
     '@media': {
       [breakpoints.xx_laptop]: {
         fontSize: '16px',
-        padding: '13px 30px',
+        padding: '13px 30px'
       }
     }
   }
 })
 
-export const endIcon = style({
-  selectors: {
-    [`${variants.underline} &`]: {
-      marginLeft: '20px',
-    }
+export const colors = styleVariants({
+  primary: {
+    ...(variants.text && {
+      color: vars.color.primary,
+      backgroundColor: vars.color.transparent,
+      border: 'none'
+    }),
+    ...(variants.contained && {
+      backgroundColor: vars.color.primary,
+      color: vars.color.onOptional,
+      outline: 'none',
+      border: 'none'
+    }),
+    ...(variants.outlined && {
+      backgroundColor: vars.color.transparent,
+      color: vars.color.primary,
+      border: `1px solid ${vars.color.primary}`,
+      borderRadius: vars.unit,
+      outline: 'none'
+    }),
+    ...(variants.underlined && {
+      backgroundColor: vars.color.transparent,
+      color: vars.color.primary,
+      border: 'none',
+      borderBottom: `1px solid ${vars.color.primary}`,
+      outline: 'none'
+    })
   }
 })
+
+// export const endIcon = style({
+// selectors: {
+//   [`${variants.underline} &`]: {
+//     marginLeft: '20px',
+//   }
+// }
+// })

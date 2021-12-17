@@ -1,4 +1,5 @@
 import * as styles from './styles.css'
+import { TButtonRecipe } from './styles.css'
 
 import { Box } from '../Box'
 import { IUIComponent } from '../../utils/types'
@@ -10,12 +11,6 @@ interface IProps extends IUIComponent {
   children?: any
   href?: string
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
-  // variant?: keyof typeof styles.variants
-  // color?: keyof typeof styles.colors
-  // size?: keyof typeof styles.sizes
-  size?: 'small' | 'medium' | 'large'
-  variant?: 'contained' | 'outlined' | 'underlined' | 'text'
-  hue?: 'primary' | 'secondary' | undefined
   disabled?: boolean
   endIcon?: ReactElement
   startIcon?: ReactElement
@@ -33,7 +28,7 @@ export function Button({
   disabled = false,
   onClick,
   ...rest
-}: IProps) {
+}: IProps & TButtonRecipe) {
   // const endIconStyled = endIcon && cloneElement(endIcon, { className: styles.endIcon })
   // const cls = cn(
   //   styles.button,

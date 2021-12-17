@@ -2,7 +2,7 @@ import { vars } from 'site/styles/theme.css'
 import { style } from '@vanilla-extract/css'
 
 import { sprinkles } from 'site/styles/sprinkles.css'
-import { recipe } from '@vanilla-extract/recipes'
+import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 
 export const button = recipe({
   base: {
@@ -45,7 +45,7 @@ export const button = recipe({
       },
       secondary: {
 
-      }
+      },
     },
     variant: {
       text: {
@@ -178,3 +178,5 @@ export const button = recipe({
     hue: 'primary',
   }
 })
+
+export type TButtonRecipe = RecipeVariants<typeof button>

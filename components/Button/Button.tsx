@@ -14,11 +14,11 @@ interface IProps extends IUIComponent {
   disabled?: boolean
   endIcon?: ReactElement
   startIcon?: ReactElement
+  [key: string]: any
 }
 
 export function Button({
   children,
-  href,
   className,
   variant = 'contained',
   size = 'medium',
@@ -47,7 +47,7 @@ export function Button({
   return (
     <Box
       onClick={clickHandler}
-      component={href ? 'a' : 'button'}
+      component={rest.href ? 'a' : 'button'}
       disabled={disabled}
       className={cn(className, styles.button({
         variant,

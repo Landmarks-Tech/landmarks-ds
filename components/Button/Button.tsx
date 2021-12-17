@@ -14,8 +14,8 @@ interface IProps extends IUIComponent {
   // color?: keyof typeof styles.colors
   // size?: keyof typeof styles.sizes
   size?: 'small' | 'medium' | 'large'
-  variant?: 'contained' | 'outlined' | 'underlined'
-  hue?: 'primary' | 'secondary' | 'default' | 'inherit' | undefined
+  variant?: 'contained' | 'outlined' | 'underlined' | 'text'
+  hue?: 'primary' | 'secondary' | undefined
   disabled?: boolean
   endIcon?: ReactElement
   startIcon?: ReactElement
@@ -24,7 +24,7 @@ interface IProps extends IUIComponent {
 export function Button({
   children,
   href,
-  className = '',
+  className,
   variant = 'contained',
   size = 'medium',
   hue = 'primary',
@@ -55,9 +55,9 @@ export function Button({
       component={href ? 'a' : 'button'}
       disabled={disabled}
       className={cn(className, styles.button({
-        types: variant,
-        size: size,
-        color: hue,
+        variant,
+        size,
+        hue,
       }))}
       {...rest}
     >

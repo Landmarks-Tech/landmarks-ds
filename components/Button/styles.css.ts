@@ -1,7 +1,7 @@
 import { breakpoints, vars } from 'site/styles/theme.css'
 import { style, styleVariants } from '@vanilla-extract/css'
 
-import { atoms } from 'site/styles/sprinkles.css'
+import { sprinkles } from 'site/styles/sprinkles.css'
 import { recipe } from '@vanilla-extract/recipes'
 
 export const buttonStyles = recipe({
@@ -111,7 +111,7 @@ export const button = recipe({
 })
 
 // export const button = style([
-//   atoms({
+//   sprinkles({
 //     alignItems: 'center',
 //     textTransform: 'uppercase',
 //     cursor: 'pointer'

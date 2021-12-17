@@ -1,15 +1,10 @@
 import * as styles from './styles.css'
 
-import { button, buttonStyles } from './styles.css'
-
 import { Box } from '../Box'
-import { ConditionalValue } from '@vanilla-extract/sprinkles'
 import { IUIComponent } from '../../utils/types'
 import React from 'react'
 import { ReactElement } from 'react'
-import { camelCase } from 'lodash'
 import cn from 'classnames'
-import { sprinkles } from '../../../site/styles/sprinkles.css'
 
 interface IProps extends IUIComponent {
   children?: any
@@ -59,11 +54,11 @@ export function Button({
       onClick={clickHandler}
       component={href ? 'a' : 'button'}
       disabled={disabled}
-      className={`${button({
-        types: `${variant}`,
-        size: `${size}`,
-        color: `${hue}`
-      })} ${className}`}
+      className={cn(className, styles.button({
+        types: variant,
+        size: size,
+        color: hue,
+      }))}
       {...rest}
     >
       {startIcon}

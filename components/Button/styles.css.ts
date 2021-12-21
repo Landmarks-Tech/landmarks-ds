@@ -1,8 +1,8 @@
-import { vars } from 'site/styles/theme.css'
-import { style } from '@vanilla-extract/css'
+import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
 
 import { sprinkles } from 'site/styles/sprinkles.css'
-import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
+import { style } from '@vanilla-extract/css'
+import { vars } from 'site/styles/theme.css'
 
 export const button = recipe({
   base: {
@@ -17,7 +17,7 @@ export const button = recipe({
     display: 'inline-flex',
     fontFamily: vars.font.body,
     textDecoration: 'none',
-    cursor: 'pointer',
+    cursor: 'pointer'
     // border: 'none', // breaks outlined and underlined variant
   },
   variants: {
@@ -26,43 +26,51 @@ export const button = recipe({
       small: sprinkles({
         fontSize: '-1x',
         paddingX: 'small',
-        paddingY: 'xsmall',
+        paddingY: 'xsmall'
       }),
       medium: sprinkles({
         fontSize: '1x',
         paddingX: 'medium',
-        paddingY: 'small',
+        paddingY: 'small'
       }),
       large: sprinkles({
         fontSize: '2x',
         paddingX: 'large',
-        paddingY: 'medium',
-      }),
+        paddingY: 'medium'
+      })
     },
     hue: {
-      primary: {
-
-      },
-      secondary: {
-
-      },
+      primary: {},
+      secondary: {}
     },
     variant: {
       text: {
-        border: 'none', // not sure about this reset
+        border: 'none' // not sure about this reset
       },
       contained: {
-        border: 'none',
+        border: 'none'
       },
-      outlined: {
-
-      },
+      outlined: {},
       underlined: {
         borderLeft: 'none',
         borderTop: 'none',
-        borderRight: 'none',
-      },
+        borderRight: 'none'
+      }
+    },
+    disabledButton: {
+      yes: {
+        // opacity: 0.5,
+        background: 'neutral_5',
+        cursor: 'not-allowed'
+      }
     }
+    // disabled: {
+    //   no: {},
+    //   yes: {
+    //     opacity: 0.5,
+    //     cursor: 'not-allowed'
+    //   }
+    // }
   },
 
   compoundVariants: [
@@ -70,72 +78,72 @@ export const button = recipe({
     {
       variants: {
         variant: 'text',
-        hue: 'primary',
+        hue: 'primary'
       },
       style: sprinkles({
         color: 'primary',
-        background: 'transparent',
+        background: 'transparent'
       })
     },
     {
       variants: {
         variant: 'text',
-        hue: 'secondary',
+        hue: 'secondary'
       },
       style: sprinkles({
         color: 'secondary',
-        background: 'transparent',
+        background: 'transparent'
       })
     },
     // contained
     {
       variants: {
         variant: 'contained',
-        hue: 'primary',
+        hue: 'primary'
       },
       style: sprinkles({
         color: 'white',
-        background: 'primary',
+        background: 'primary'
       })
     },
     {
       variants: {
         variant: 'contained',
-        hue: 'secondary',
+        hue: 'secondary'
       },
       style: sprinkles({
         color: 'white',
-        background: 'secondary',
+        background: 'secondary'
       })
     },
     // outlined
     {
       variants: {
         variant: 'outlined',
-        hue: 'primary',
+        hue: 'primary'
       },
       style: [
         sprinkles({
           color: 'primary',
-          background: 'transparent',
+          background: 'transparent'
         }),
         style({
-          border: `1px solid ${vars.color.primary}`,
+          border: `1px solid ${vars.color.primary}`
         })
       ]
     },
     {
       variants: {
         variant: 'outlined',
-        hue: 'secondary',
+        hue: 'secondary'
       },
       style: [
         sprinkles({
           color: 'secondary',
-          background: 'transparent',
+          background: 'transparent'
         }),
         style({
-          border: `1px solid ${vars.color.secondary}`,
+          border: `1px solid ${vars.color.secondary}`
         })
       ]
     },
@@ -143,27 +151,27 @@ export const button = recipe({
     {
       variants: {
         variant: 'underlined',
-        hue: 'primary',
+        hue: 'primary'
       },
-       style: [
-         sprinkles({
-           color: 'primary',
-           background: 'transparent'
-         }),
-         style({
-           borderBottom: `2px solid ${vars.color.primary}`
-         })
-       ]
+      style: [
+        sprinkles({
+          color: 'primary',
+          background: 'transparent'
+        }),
+        style({
+          borderBottom: `2px solid ${vars.color.primary}`
+        })
+      ]
     },
     {
       variants: {
         variant: 'underlined',
-        hue: 'secondary',
+        hue: 'secondary'
       },
       style: [
         sprinkles({
           color: 'secondary',
-          background: 'transparent',
+          background: 'transparent'
         }),
         style({
           borderBottom: `2px solid ${vars.color.secondary}`
@@ -175,7 +183,7 @@ export const button = recipe({
   defaultVariants: {
     size: 'medium',
     variant: 'contained',
-    hue: 'primary',
+    hue: 'primary'
   }
 })
 

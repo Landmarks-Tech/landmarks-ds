@@ -1,10 +1,10 @@
 import * as styles from './styles.css'
-import { TButtonRecipe } from './styles.css'
 
 import { Box } from '../Box'
 import { IUIComponent } from '../../utils/types'
 import React from 'react'
 import { ReactElement } from 'react'
+import { TButtonRecipe } from './styles.css'
 import cn from 'classnames'
 
 interface IProps extends IUIComponent {
@@ -29,7 +29,8 @@ export function Button({
   onClick,
   ...rest
 }: IProps & TButtonRecipe) {
-  // const endIconStyled = endIcon && cloneElement(endIcon, { className: styles.endIcon })
+  // const endIconStyled =
+  //   endIcon && cloneElement(endIcon, { className: styles.endIcon })
   // const cls = cn(
   //   styles.button,
   //   // styles.variants[variant],
@@ -49,15 +50,20 @@ export function Button({
       onClick={clickHandler}
       component={rest.href ? 'a' : 'button'}
       disabled={disabled}
-      className={cn(className, styles.button({
-        variant,
-        size,
-        hue,
-      }))}
+      className={cn(
+        className,
+        styles.button({
+          variant,
+          size,
+          hue,
+          disabledButton: disabled ? 'yes' : undefined
+        })
+      )}
       {...rest}
     >
       {startIcon}
       {children}
+      {endIcon}
       {/* {endIconStyled} */}
     </Box>
   )

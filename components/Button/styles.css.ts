@@ -1,22 +1,50 @@
 import { RecipeVariants, recipe } from '@vanilla-extract/recipes'
+import { style, styleVariants } from '@vanilla-extract/css'
 
 import { sprinkles } from 'site/styles/sprinkles.css'
-import { style } from '@vanilla-extract/css'
 import { vars } from 'site/styles/theme.css'
 
+// Conditionally changing the padding based on the size of the button
+export const suffix = styleVariants({
+  small: {
+    paddingRight: vars.spacing.xsmall
+  },
+  medium: {
+    paddingRight: vars.spacing.small
+  },
+  large: {
+    paddingRight: vars.spacing.medium
+  }
+})
+
+export const prefix = styleVariants({
+  small: {
+    paddingLeft: vars.spacing.xsmall
+  },
+  medium: {
+    paddingLeft: vars.spacing.small
+  },
+  large: {
+    paddingLeft: vars.spacing.medium
+  }
+})
+
 export const button = recipe({
+  // default attributes
   base: {
     whiteSpace: 'nowrap',
     userSelect: 'none',
     outline: 'none',
     textAlign: 'center',
     justifyContent: 'center',
+    // align icons with the text
+    alignItems: 'center',
     textTransform: 'uppercase',
     transition: 'all 0.2s ease-in-out',
     overflow: 'hidden',
     display: 'inline-flex',
     fontFamily: vars.font.body,
-    textDecoration: 'none',
+    textDecoration: 'none'
     // border: 'none', // breaks outlined and underlined variant
   },
   variants: {
@@ -66,7 +94,7 @@ export const button = recipe({
         // }),
         // when you need to overwrite styles, use `styles({})`. This works simply because it's compiled in the .css *after* the sprinkles styles, so it's got higher priority.
         style({
-          cursor: 'not-allowed',
+          cursor: 'not-allowed'
         })
       ],
       false: style({
@@ -183,40 +211,40 @@ export const button = recipe({
     {
       variants: {
         variant: 'text',
-        disabled: true,
+        disabled: true
       },
       style: {
-        color: vars.color.neutral_4,
+        color: vars.color.neutral_4
       }
     },
     {
       variants: {
         variant: 'contained',
-        disabled: true,
+        disabled: true
       },
       style: {
         background: vars.color.neutral_1,
-        color: vars.color.neutral_4,
+        color: vars.color.neutral_4
       }
     },
     {
       variants: {
         variant: 'outlined',
-        disabled: true,
+        disabled: true
       },
       style: {
         borderColor: vars.color.neutral_4,
-        color: vars.color.neutral_4,
+        color: vars.color.neutral_4
       }
     },
     {
       variants: {
         variant: 'underlined',
-        disabled: true,
+        disabled: true
       },
       style: {
         borderColor: vars.color.neutral_4,
-        color: vars.color.neutral_4,
+        color: vars.color.neutral_4
       }
     }
   ],
@@ -225,7 +253,7 @@ export const button = recipe({
     size: 'medium',
     variant: 'contained',
     hue: 'primary',
-    disabled: false,
+    disabled: false
   }
 })
 

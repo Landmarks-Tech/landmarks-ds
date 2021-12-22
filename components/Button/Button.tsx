@@ -12,8 +12,8 @@ interface IProps extends IUIComponent {
   href?: string
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
   disabled?: boolean
-  endIcon?: ReactElement
-  startIcon?: ReactElement
+  prefix?: ReactElement
+  suffix?: ReactElement
   [key: string]: any
 }
 
@@ -23,32 +23,22 @@ export function Button({
   variant = 'contained',
   size = 'medium',
   hue = 'primary',
-  startIcon,
-  endIcon,
+  suffix,
+  prefix,
   disabled = false,
   onClick,
+  href,
   ...rest
 }: IProps & TButtonRecipe) {
-  // const endIconStyled =
-  //   endIcon && cloneElement(endIcon, { className: styles.endIcon })
-  // const cls = cn(
-  //   styles.button,
-  //   // styles.variants[variant],
-  //   styles.sizes[size],
-  //   // styles.colors[color],
-  //   className
-  // )
-
   const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (disabled) return
-    // if (href) return
     onClick && onClick(e)
   }
 
   return (
     <Box
       onClick={clickHandler}
-      component={rest.href ? 'a' : 'button'}
+      component={href ? 'a' : 'button'}
       disabled={disabled}
       className={cn(
         className,
@@ -56,15 +46,15 @@ export function Button({
           variant,
           size,
           hue,
-          disabled,
+          disabled
         })
       )}
+      href={disabled ? undefined : href}
       {...rest}
     >
-      {startIcon}
+      <span className={styles.suffix[size]}>{suffix}</span>
       {children}
-      {endIcon}
-      {/* {endIconStyled} */}
+      <span className={styles.prefix[size]}>{prefix}</span>
     </Box>
   )
 }

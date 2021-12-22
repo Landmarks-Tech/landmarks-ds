@@ -56,7 +56,7 @@ export function Button({
           variant,
           size,
           hue,
-          disabledButton: disabled ? 'yes' : undefined
+          disabled,
         })
       )}
       {...rest}

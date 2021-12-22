@@ -17,7 +17,6 @@ export const button = recipe({
     display: 'inline-flex',
     fontFamily: vars.font.body,
     textDecoration: 'none',
-    cursor: 'pointer'
     // border: 'none', // breaks outlined and underlined variant
   },
   variants: {
@@ -57,20 +56,23 @@ export const button = recipe({
         borderRight: 'none'
       }
     },
-    disabledButton: {
-      yes: {
-        // opacity: 0.5,
-        background: 'neutral_5',
-        cursor: 'not-allowed'
-      }
+    disabled: {
+      // you can combine both sprinkles and regular styles by using an array
+      true: [
+        // don't overwrite styles using sprinkles because it's not working.
+        // sprinkles({
+        //   background: 'neutral_1',
+        //   color: 'neutral_4',
+        // }),
+        // when you need to overwrite styles, use `styles({})`. This works simply because it's compiled in the .css *after* the sprinkles styles, so it's got higher priority.
+        style({
+          cursor: 'not-allowed',
+        })
+      ],
+      false: style({
+        cursor: 'pointer'
+      })
     }
-    // disabled: {
-    //   no: {},
-    //   yes: {
-    //     opacity: 0.5,
-    //     cursor: 'not-allowed'
-    //   }
-    // }
   },
 
   compoundVariants: [
@@ -177,13 +179,53 @@ export const button = recipe({
           borderBottom: `2px solid ${vars.color.secondary}`
         })
       ]
+    },
+    {
+      variants: {
+        variant: 'text',
+        disabled: true,
+      },
+      style: {
+        color: vars.color.neutral_4,
+      }
+    },
+    {
+      variants: {
+        variant: 'contained',
+        disabled: true,
+      },
+      style: {
+        background: vars.color.neutral_1,
+        color: vars.color.neutral_4,
+      }
+    },
+    {
+      variants: {
+        variant: 'outlined',
+        disabled: true,
+      },
+      style: {
+        borderColor: vars.color.neutral_4,
+        color: vars.color.neutral_4,
+      }
+    },
+    {
+      variants: {
+        variant: 'underlined',
+        disabled: true,
+      },
+      style: {
+        borderColor: vars.color.neutral_4,
+        color: vars.color.neutral_4,
+      }
     }
   ],
 
   defaultVariants: {
     size: 'medium',
     variant: 'contained',
-    hue: 'primary'
+    hue: 'primary',
+    disabled: false,
   }
 })
 

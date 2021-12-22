@@ -31,22 +31,25 @@ export const prefix = styleVariants({
 
 export const button = recipe({
   // default attributes
-  base: {
-    whiteSpace: 'nowrap',
-    userSelect: 'none',
-    outline: 'none',
-    textAlign: 'center',
-    justifyContent: 'center',
-    // align icons with the text
-    alignItems: 'center',
-    textTransform: 'uppercase',
-    transition: 'all 0.2s ease-in-out',
-    overflow: 'hidden',
-    display: 'inline-flex',
-    fontFamily: vars.font.body,
-    textDecoration: 'none'
-    // border: 'none', // breaks outlined and underlined variant
-  },
+  base: [
+    sprinkles({
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
+      overflow: 'hidden',
+      textTransform: 'uppercase'
+    }),
+    style({
+      whiteSpace: 'nowrap',
+      justifyContent: 'center',
+      userSelect: 'none',
+      display: 'inline-flex',
+      outline: 'none',
+      transition: 'all 0.2s ease-in-out',
+      fontFamily: vars.font.body,
+      textDecoration: 'none'
+    })
+  ],
   variants: {
     size: {
       // line height needs to be added

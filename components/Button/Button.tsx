@@ -264,6 +264,29 @@ const findPos = (orientation: Range<360>): number => {
   return Math.floor((19 / 360) * orientation)
 }
 
+const getLocation = (
+  pos: number
+): {
+  top?: string | undefined
+  bottom?: string | undefined
+  left?: string | undefined
+  right?: string | undefined
+} => {
+  if (pos == 0) {
+    return {
+      top: '0',
+      left: '55%'
+    }
+  }
+  // and so on..
+  // needs to be completed
+  else if (pos == 1) {
+  }
+  return {
+    top: '0'
+  }
+}
+
 export function Sunshine({
   children,
   orientation = 0,
@@ -274,7 +297,7 @@ export function Sunshine({
       style={{
         width: '100%',
         height: '100%',
-        background: `linear-gradient(${orientation}deg, rgba(2,0,36,0) 0%, rgba(237,206,126,1) 100%)`
+        background: `linear-gradient(${orientation}deg, rgba(2,0,36,0) 0%, rgba(237,206,126,0.7) 100%)`
       }}
     >
       <svg
@@ -283,10 +306,8 @@ export function Sunshine({
         height="74"
         viewBox="0 0 74 74"
         style={{
-          // think of a way to change the position based on findPos(orientation)
-          left: findPos(orientation),
-          top: 0
-          // position: 'absolute'
+          position: 'relative',
+          ...getLocation(findPos(orientation))
         }}
       >
         <g

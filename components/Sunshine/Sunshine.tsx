@@ -1,13 +1,12 @@
 import * as styles from './styles.css'
 
-import { IUIComponent, Range } from '../../utils/types'
+import { IUIComponent } from '../../utils/types'
 
 import { Box } from '../Box'
-import React from 'react'
 
 interface IProps extends IUIComponent {
   children?: any
-  orientation?: Range<360>
+  orientation?: number
   tooltip?: string
   [key: string]: any
 }
@@ -40,19 +39,11 @@ interface IProps extends IUIComponent {
 
 */
 const findPos = (
-  orientation: Range<360>
+  orientation: number
 ): keyof typeof quadrantToCssPosition => {
   return Math.floor((20 / 360) * orientation) as any
 }
 
-// range is somehow only from 0 - 80?
-// so I divided it into multiples of 16 because:
-// (80 / 5) = 16
-// 5 is the number of spaces between Sun's
-// in a single line
-
-// needs some check in different aspect ratios
-// for now 1:1 works fine
 const quadrantToCssPosition = {
   0: {
     top: '100%',

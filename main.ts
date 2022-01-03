@@ -26,6 +26,7 @@ export { DesktopMenu } from './components/DesktopMenu'
 export { LanguageSwitcher } from './components/LanguageSwitcher'
 export { Pill } from './components/Pill'
 export { Sunshine } from './components/Sunshine'
+export { Tooltip } from './components/Tooltip'
 export * from './components/Headings'
 
 export * from './utils'

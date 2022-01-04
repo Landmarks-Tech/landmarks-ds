@@ -164,7 +164,7 @@ export function Sunshine({
         }}
         {...rest}
       >
-        <Tooltip content={tooltip}>
+        <Tooltip content={tooltip} sideOffset={-5}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="70"

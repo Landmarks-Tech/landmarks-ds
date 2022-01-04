@@ -3,6 +3,7 @@ import * as styles from './styles.css'
 
 import { IUIComponent } from '../../utils/types'
 import cn from 'classnames'
+import { Box } from '../Box'
 
 interface IProps extends IUIComponent {
   children: any
@@ -10,19 +11,19 @@ interface IProps extends IUIComponent {
   [key: string]: any
 }
 
-export function Tooltip({ children, content, ...rest }: IProps) {
+export function Tooltip({ children, content, className, ...rest }: IProps) {
   return (
     <TooltipPrimitives.Root>
       <TooltipPrimitives.Trigger asChild>{children}</TooltipPrimitives.Trigger>
-      <TooltipPrimitives.Content className={cn(styles.content, { ...rest })}>
+      {/* forwarding all sprinkles props to Content */}
+      <Box component={TooltipPrimitives.Content} className={cn(styles.content, className)} {...rest}>
         {content}
         <TooltipPrimitives.Arrow
-          offset={10}
           height={6}
           width={10}
           className={styles.arrow}
         />
-      </TooltipPrimitives.Content>
+      </Box>
     </TooltipPrimitives.Root>
   )
 }

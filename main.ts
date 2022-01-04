@@ -27,6 +27,7 @@ export { LanguageSwitcher } from './components/LanguageSwitcher'
 export { Pill } from './components/Pill'
 export { Sunshine } from './components/Sunshine'
 export { Tooltip } from './components/Tooltip'
+export { Card } from './components/Card'
 export * from './components/Headings'
 
 export * from './utils'

@@ -31,14 +31,19 @@ export const card = recipe({
       none: {
         boxShadow: 'none'
       },
+      // gradients generated from:
+      // https://shadows.brumm.af
       small: {
-        boxShadow: '0px 0px 1px 1px rgba(0, 0, 0, 0.1)'
+        boxShadow:
+          '2.6px 2.6px 2.7px rgba(0, 0, 0, 0.008),9.5px 9.5px 6.9px rgba(0, 0, 0, 0.011),23px 23px 14.2px rgba(0, 0, 0, 0.013),47.7px 47.7px 29.2px rgba(0, 0, 0, 0.017),100px 100px 80px rgba(0, 0, 0, 0.03)'
       },
       medium: {
-        boxShadow: '0px 0px 2px 2px rgba(0, 0, 0, 0.1)'
+        boxShadow:
+          '2.6px 2.6px 2.7px rgba(0, 0, 0, 0.016),9.5px 9.5px 6.9px rgba(0, 0, 0, 0.022),23px 23px 14.2px rgba(0, 0, 0, 0.027),47.7px 47.7px 29.2px rgba(0, 0, 0, 0.035),100px 100px 80px rgba(0, 0, 0, 0.06)'
       },
       large: {
-        boxShadow: '0px 0px 4px 4px rgba(0, 0, 0, 0.1)'
+        boxShadow:
+          '2.5px 2.6px 2.7px rgba(0, 0, 0, 0.027),9.2px 9.5px 6.9px rgba(0, 0, 0, 0.036),22.1px 23px 14.2px rgba(0, 0, 0, 0.044),45.8px 47.7px 29.2px rgba(0, 0, 0, 0.058),96px 100px 80px rgba(0, 0, 0, 0.1)'
       }
     }
   },

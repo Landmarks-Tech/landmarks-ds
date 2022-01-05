@@ -7,8 +7,8 @@ import { vars } from 'site/styles/theme.css'
 export const card = recipe({
   base: [
     sprinkles({
-      display: 'flex',
-      flexDirection: 'column',
+      // display: 'flex',
+      // flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
       overflow: 'hidden'
@@ -17,7 +17,6 @@ export const card = recipe({
       boxSizing: 'border-box',
       color: vars.color.white,
       backgroundColor: vars.color.primary,
-      display: 'inline-block',
       whiteSpace: 'nowrap',
       userSelect: 'none',
       outline: 'none',

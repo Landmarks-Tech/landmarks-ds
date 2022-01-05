@@ -4,11 +4,9 @@ import { fontFace, style } from '@vanilla-extract/css'
 import { sprinkles } from 'site/styles/sprinkles.css'
 import { vars } from 'site/styles/theme.css'
 
-export const card = recipe({
+export const cardRecipe = recipe({
   base: [
     sprinkles({
-      // display: 'flex',
-      // flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
       overflow: 'hidden'
@@ -44,11 +42,23 @@ export const card = recipe({
         boxShadow:
           '2.5px 2.6px 2.7px rgba(0, 0, 0, 0.027),9.2px 9.5px 6.9px rgba(0, 0, 0, 0.036),22.1px 23px 14.2px rgba(0, 0, 0, 0.044),45.8px 47.7px 29.2px rgba(0, 0, 0, 0.058),96px 100px 80px rgba(0, 0, 0, 0.1)'
       }
+    },
+    radius: {
+      small: sprinkles({
+        borderRadius: 'small'
+      }),
+      medium: sprinkles({
+        borderRadius: 'medium'
+      }),
+      large: sprinkles({
+        borderRadius: 'large'
+      })
     }
   },
   defaultVariants: {
-    elevation: 'small'
+    elevation: 'small',
+    radius: 'small'
   }
 })
 
-export type TButtonRecipe = RecipeVariants<typeof card>
+export type TCardRecipe = RecipeVariants<typeof cardRecipe>

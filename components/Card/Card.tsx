@@ -2,11 +2,11 @@ import * as styles from './styles.css'
 
 import { Box } from '../Box'
 import { IUIComponent } from '../../utils/types'
-import { TButtonRecipe } from './styles.css'
+import { TCardRecipe } from './styles.css'
+import cn from 'classnames'
 
 interface IProps extends IUIComponent {
   children: any
-  elevation?: string
   [key: string]: any
 }
 
@@ -15,9 +15,18 @@ interface ICardMediaProps extends IUIComponent {
   height: string
 }
 
-export function Card({ children, elevation, ...rest }: IProps & TButtonRecipe) {
+export function Card({
+  children,
+  className,
+  elevation,
+  radius,
+  ...rest
+}: IProps & TCardRecipe) {
   return (
-    <Box className={styles.card({ elevation })} {...rest}>
+    <Box
+      className={cn(styles.cardRecipe({ elevation, radius }), className)}
+      {...rest}
+    >
       {children}
     </Box>
   )

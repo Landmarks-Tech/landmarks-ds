@@ -28,6 +28,7 @@ export { Pill } from './components/Pill'
 export { Sunshine } from './components/Sunshine'
 export { Tooltip } from './components/Tooltip'
 export { Card, CardMedia } from './components/Card'
+export { CardCarousel } from './components/CardCarousel'
 export * from './components/Headings'
 
 export * from './utils'

@@ -32,15 +32,15 @@ export const cardRecipe = recipe({
       // https://shadows.brumm.af
       small: {
         boxShadow:
-          '2.6px 2.6px 2.7px rgba(0, 0, 0, 0.008),9.5px 9.5px 6.9px rgba(0, 0, 0, 0.011),23px 23px 14.2px rgba(0, 0, 0, 0.013),47.7px 47.7px 29.2px rgba(0, 0, 0, 0.017),100px 100px 80px rgba(0, 0, 0, 0.03)'
+          '0px 0px 0.1px rgba(0, 0, 0, 0.039),   0px 0px 0.3px rgba(0, 0, 0, 0.049),   0px 0px 0.5px rgba(0, 0, 0, 0.054),   0px 0px 0.9px rgba(0, 0, 0, 0.059),   0px 0px 1.7px rgba(0, 0, 0, 0.068),   0px 0px 4px rgba(0, 0, 0, 0.1)'
       },
       medium: {
         boxShadow:
-          '2.6px 2.6px 2.7px rgba(0, 0, 0, 0.016),9.5px 9.5px 6.9px rgba(0, 0, 0, 0.022),23px 23px 14.2px rgba(0, 0, 0, 0.027),47.7px 47.7px 29.2px rgba(0, 0, 0, 0.035),100px 100px 80px rgba(0, 0, 0, 0.06)'
+          '0px 0.4px 0.3px rgba(0, 0, 0, 0.039),   0px 0.8px 0.7px rgba(0, 0, 0, 0.049),   0px 1.3px 1.3px rgba(0, 0, 0, 0.054),   0px 2.2px 2.2px rgba(0, 0, 0, 0.059),   0px 3.7px 4.2px rgba(0, 0, 0, 0.068),   0px 8px 10px rgba(0, 0, 0, 0.1)'
       },
       large: {
         boxShadow:
-          '2.5px 2.6px 2.7px rgba(0, 0, 0, 0.027),9.2px 9.5px 6.9px rgba(0, 0, 0, 0.036),22.1px 23px 14.2px rgba(0, 0, 0, 0.044),45.8px 47.7px 29.2px rgba(0, 0, 0, 0.058),96px 100px 80px rgba(0, 0, 0, 0.1)'
+          '0px 1.3px 0.8px rgba(0, 0, 0, 0.039),   0px 2.9px 2px rgba(0, 0, 0, 0.049),   0px 5px 3.8px rgba(0, 0, 0, 0.054),   0px 8.1px 6.7px rgba(0, 0, 0, 0.059),   0px 13.8px 12.5px rgba(0, 0, 0, 0.068),   0px 30px 30px rgba(0, 0, 0, 0.1)'
       }
     },
     radius: {

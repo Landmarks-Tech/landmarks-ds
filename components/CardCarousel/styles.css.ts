@@ -14,7 +14,7 @@ export const card = style({
 
 export const cardCarousel = style([
   sprinkles({
-    paddingLeft: 'large',
+    padding: 'large',
     display: { mobile: 'flex', laptop: 'grid' }
   }),
   {

@@ -52,8 +52,20 @@ export const lightDarkRecipe = recipe({
   ],
   variants: {
     hue: {
-      onLight: {},
-      onDark: {},
+      onLight: {
+        selectors: {
+          '&:hover': {
+            color: vars.color.neutral_6
+          }
+        }
+      },
+      onDark: {
+        selectors: {
+          '&:hover': {
+            color: vars.color.neutral_0
+          }
+        }
+      },
     },
     active: {
       true: {},
@@ -118,35 +130,94 @@ export const variantRecipe = recipe({
   }
 })
 
-// ACTIVE INDICATORS - Used to highlight the active element
-export const activeIndicatorPartialUnderline = style({
-  position: 'relative',
-  selectors: {
-    '&:after': {
-      content: '" "',
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      width: '25px',
-      borderBottom: `3px solid ${vars.color.primary}`
+export const activeIndicatorPartialUnderlineRecipe = recipe({
+  base: [
+    sprinkles({
+      position: 'relative',
+    }),
+    {
+      selectors: {
+        '&:after': {
+          content: '" "',
+          position: 'absolute',
+          transition: 'all 0.3s',
+          bottom: 0,
+          left: 0,
+          width: '25px',
+          // neutral 3 works on both light and dark
+          borderBottom: `3px solid ${vars.color.neutral_3}`
+        }
+      }
+    }
+  ],
+  variants: {
+    active: {
+      true: {
+        selectors: {
+          '&:after': {
+            borderBottomColor: vars.color.primary
+          }
+        }
+      },
+      false: {
+        selectors: {
+          '&:after': {
+            opacity: 0,
+            transform: 'translateY(10px)'
+          },
+          '&:hover:after': {
+            opacity: 1,
+            transform: 'translateY(0px)'
+          }
+        }
+      }
     }
   }
 })
 
-export const activeIndicatorUnderline = style({
-  position: 'relative',
-  selectors: {
-    '&:after': {
-      content: '" "',
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      borderBottom: `3px solid ${vars.color.primary}`
+export const activeIndicatorFullUnderlineRecipe = recipe({
+  base: [
+    sprinkles({
+      position: 'relative',
+    }),
+    {
+      selectors: {
+        '&:after': {
+          content: '" "',
+          position: 'absolute',
+          transition: 'all 0.3s',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          borderBottom: `2px solid ${vars.color.neutral_3}`
+        }
+      }
+    }
+  ],
+  variants: {
+    active: {
+      true: {
+        selectors: {
+          '&:after': {
+            borderBottomColor: vars.color.primary
+          }
+        }
+      },
+      false: {
+        selectors: {
+          '&:after': {
+            opacity: 0,
+            transform: 'scaleX(0.4)'
+          },
+          '&:hover:after': {
+            opacity: 1,
+            transform: 'scaleX(1)'
+          }
+        }
+      }
     }
   }
 })
-// ACTIVE INDICATORS - END
 
 export type TLightDarkRecipe = RecipeVariants<typeof lightDarkRecipe>
 export type TVariantRecipe = RecipeVariants<typeof variantRecipe>

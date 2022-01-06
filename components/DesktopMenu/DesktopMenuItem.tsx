@@ -45,10 +45,9 @@ export const DesktopMenuItem = React.forwardRef(({
           variant
         }),
         // optional indicators applied on for active element
-        // would be cleaner with recipe, but perhaps it generates too many classes with combinations of active & activeIndicator
-        active && {
-          [styles.activeIndicatorPartialUnderline]: activeIndicator === 'partialUnderline',
-          [styles.activeIndicatorUnderline]: activeIndicator === 'fullUnderline',
+        {
+          [styles.activeIndicatorPartialUnderlineRecipe({ active })]: activeIndicator === 'partialUnderline',
+          [styles.activeIndicatorFullUnderlineRecipe({ active })]: activeIndicator === 'fullUnderline'
         }
       )}
       {...rest}>

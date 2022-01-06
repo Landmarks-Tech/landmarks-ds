@@ -42,10 +42,13 @@ export const mainButton = style({
 // only handles text color based on light/dark background
 export const lightDarkRecipe = recipe({
   base: [
-    style({
-      // should this be here?
+    // should all these defaults be here?
+    sprinkles({
+      cursor: 'pointer',
+    }),
+    {
       textDecoration: 'none',
-    })
+    }
   ],
   variants: {
     hue: {

@@ -1,32 +1,20 @@
 import { ReactElement, Children, cloneElement } from 'react'
 import cn from 'classnames'
 import { useTranslation } from 'next-i18next'
-import { FaPhoneAlt } from 'react-icons/fa'
 
 import { IUIComponent } from '../../utils/types'
 import { Box } from "../Box"
 import { Container } from '../Container'
 import { LanguageSwitcher } from '../LanguageSwitcher'
-import { Button } from '../Button'
 import * as styles from './styles.css'
-
-const defaultClasses = {
-  button: styles.mainButton,
-}
-
-const defaultLabels = {
-  callNow: 'callNow',
-}
 
 interface CommonProps extends IUIComponent {
   logo: ReactElement
-  phone: string
   children: ReactElement | ReactElement[]
+  cta?: ReactElement
   sticky?: boolean
   contained?: boolean
   extra?: ReactElement
-  classes?: Partial<typeof defaultClasses>
-  labels?: Partial<typeof defaultLabels>
 }
 
 type ConditionalProps =
@@ -35,32 +23,35 @@ type ConditionalProps =
 
 type Props = CommonProps & ConditionalProps
 
+/**
+ * RESPONSIBILITIES:
+ *
+ * - handle multiple layouts using logoPlacement and menuPlacement combinations
+ * - keep logo visible on mobile, but hide the rest of the menus
+ * - sticky functionality
+ * - provide extra locations where we can insert items:
+ *    - extra: next to the logo
+ *    - cta: the main Call to Action area
+ *
+ * NOT IN SCOPE
+ * - menu item styles
+ */
 export function DesktopMenu({
   logo,
+  children,
+  cta,
   extra,
   logoPlacement = 'left',
   menuPlacement,
   sticky = false,
   contained = true,
-  children,
   className,
-  classes,
-  labels,
   ...rest
 }: Props) {
-  // TODO: find out why translation is not working
   const { t } = useTranslation()
   const cls = cn(className, {
     [styles.stickyMenu]: sticky
   })
-  const mergedClasses = {
-    ...defaultClasses,
-    ...classes,
-  }
-  const mergedLabels = {
-    ...defaultLabels,
-    ...labels,
-  }
 
   if (logoPlacement === 'left') {
     return (
@@ -90,15 +81,7 @@ export function DesktopMenu({
           display="flex"
           marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
           <LanguageSwitcher />
-          <Button
-            background="brand"
-            borderRadius="full"
-            size="medium"
-            display="flex"
-            className={cn(styles.mainButton, mergedClasses?.button)}>
-            <Box component={FaPhoneAlt} marginRight="small" />
-            {mergedLabels.callNow}
-          </Button>
+          {cta}
         </Box>
       </Box>
     )
@@ -134,16 +117,9 @@ export function DesktopMenu({
         <LanguageSwitcher
           className={styles.hideOnMobile}
           style={{ order: childCount }} />
-        <Button
-          background="brand"
-          borderRadius="full"
-          size="medium"
-          display="flex"
-          style={{ order: buttonOrder }}
-          className={cn(styles.mainButton, mergedClasses?.button)}>
-          <Box component={FaPhoneAlt} marginRight="small" />
-          {mergedLabels.callNow}
-        </Button>
+        <div style={{ order: buttonOrder }}>
+          {cta}
+        </div>
       </Box>
     )
   }

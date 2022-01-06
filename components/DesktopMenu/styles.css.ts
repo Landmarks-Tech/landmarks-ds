@@ -39,12 +39,14 @@ export const mainButton = style({
   }
 })
 
-// only handles text color based on light/dark background
+// only handles text color based on light/dark background, also hover color
 export const lightDarkRecipe = recipe({
   base: [
     // should all these defaults be here?
     sprinkles({
       cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
     }),
     {
       textDecoration: 'none',

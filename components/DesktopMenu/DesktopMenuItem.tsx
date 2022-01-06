@@ -5,10 +5,13 @@ import React from 'react'
 import { IUIComponent } from '../../utils/types'
 import * as styles from './styles.css'
 import { Box } from '../Box'
+import { ReactElement } from 'react'
 
 interface IProps extends IUIComponent {
   title: any
   href?: string
+  prefix?: ReactElement
+  suffix?: ReactElement
   activeIndicator?: 'partialUnderline' | 'fullUnderline'
 }
 
@@ -25,6 +28,8 @@ export const DesktopMenuItem = React.forwardRef(({
   activeIndicator = 'partialUnderline',
   // variant are handled using both custom components and variantRecipe
   variant = 'regular',
+  prefix,
+  suffix,
   active = false,
   ...rest
 }: IProps & styles.TLightDarkRecipe & styles.TVariantRecipe, ref: React.ForwardedRef<HTMLAnchorElement>) => {
@@ -51,7 +56,9 @@ export const DesktopMenuItem = React.forwardRef(({
         }
       )}
       {...rest}>
+      {prefix}
       {processedTitle}
+      {suffix}
     </Box>
   )
 
@@ -69,10 +76,10 @@ export const DesktopMenuItem = React.forwardRef(({
 function SplitText({ children }: { children: string }) {
   const [firstWord, ...otherWords] = children.split(' ')
   return (
-    <>
+    <div>
       <Box component="p" fontSize="-1x">{firstWord}</Box>
       <Box component="p" fontSize="2x">{otherWords.join(' ')}</Box>
-    </>
+    </div>
   )
 }
 

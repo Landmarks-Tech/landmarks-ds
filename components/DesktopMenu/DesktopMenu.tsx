@@ -28,6 +28,7 @@ type Props = CommonProps & ConditionalProps
  *
  * - handle multiple layouts using logoPlacement and menuPlacement combinations
  * - keep logo visible on mobile, but hide the rest of the menus
+ * - knows about hue and passes it to it's child DesktopMenuItems and LanguageSwitcher
  * - sticky functionality
  * - provide extra locations where we can insert items:
  *    - extra: next to the logo
@@ -41,13 +42,14 @@ export function DesktopMenu({
   children,
   cta,
   extra,
+  hue = 'onLight',
   logoPlacement = 'left',
   menuPlacement,
   sticky = false,
   contained = true,
   className,
   ...rest
-}: Props) {
+}: Props & styles.TLightDarkRecipe) {
   const { t } = useTranslation()
   const cls = cn(className, {
     [styles.stickyMenu]: sticky
@@ -74,13 +76,19 @@ export function DesktopMenu({
             ...(menuPlacement === 'left') && { marginRight: 'auto' },
             ...(menuPlacement === 'right') && { marginLeft: 'auto' },
           }}>
-          {children}
+          {Children.map(children, (child) => (
+            cloneElement(child, {
+              hue,
+            })
+          ))}
         </Box>
         <Box
           className={styles.hideOnMobile}
           display="flex"
           marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
-          <LanguageSwitcher />
+          <LanguageSwitcher
+            variant="sidebyside"
+            hue={hue} />
           {cta}
         </Box>
       </Box>
@@ -110,6 +118,7 @@ export function DesktopMenu({
         </Box>
         {Children.map(children, (child, i) => cloneElement(child, {
           className: cn(styles.hideOnMobile, child.props.className),
+          hue,
           style: {
             order: i < logoOrder ? i : logoOrder + 1
           }

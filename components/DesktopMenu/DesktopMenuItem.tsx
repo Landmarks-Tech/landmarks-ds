@@ -13,6 +13,7 @@ interface IProps extends IUIComponent {
   prefix?: ReactElement
   suffix?: ReactElement
   activeIndicator?: 'partialUnderline' | 'fullUnderline'
+  [key: string]: any
 }
 
 const variantHandler = {

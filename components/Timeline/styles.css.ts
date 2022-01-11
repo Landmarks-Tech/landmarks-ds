@@ -3,6 +3,32 @@ import { sprinkles } from 'site/styles/sprinkles.css'
 import { style } from '@vanilla-extract/css'
 import { vars } from 'site/styles/theme.css'
 
+export const cta = recipe({
+  base: [
+    sprinkles({
+      padding: 'small'
+    }),
+    style({})
+  ],
+  variants: {
+    variant: {
+      normal: [
+        sprinkles({
+          background: 'tertiary',
+          color: 'white'
+        }),
+        style({
+          borderRadius: vars.border.radius.medium
+        })
+      ]
+    }
+  },
+  compoundVariants: [],
+  defaultVariants: {
+    variant: 'normal'
+  }
+})
+
 export const status = recipe({
   base: [
     sprinkles({

@@ -1,6 +1,7 @@
 import * as styles from './styles.css'
 
 import { Box } from '../Box'
+import { Button } from '../Button'
 import { IUIComponent } from '../../utils/types'
 import { IoIosCheckmark } from 'react-icons/io'
 
@@ -31,7 +32,11 @@ export function TimelineEvent({
           variant
         })}
       >
-        {!!done ? <IoIosCheckmark size={36} /> : <p>{date}</p>}
+        {!!done ? (
+          <IoIosCheckmark size={36} />
+        ) : (
+          <p className={styles.unfinished}>{date}</p>
+        )}
       </Box>
 
       {/* Title and CTA */}
@@ -42,7 +47,15 @@ export function TimelineEvent({
       >
         <p className={done ? '' : styles.unfinished}>{title}</p>
 
-        {!!done && <Box>CTA HERE</Box>}
+        {!!done && (
+          <Button
+            className={styles.cta({
+              variant
+            })}
+          >
+            DOWNLOAD
+          </Button>
+        )}
       </Box>
     </Box>
   )

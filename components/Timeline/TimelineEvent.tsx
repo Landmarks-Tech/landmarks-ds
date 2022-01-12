@@ -4,6 +4,7 @@ import { Box } from '../Box'
 import { Button } from '../Button'
 import { IUIComponent } from '../../utils/types'
 import { IoIosCheckmark } from 'react-icons/io'
+import cn from 'classnames'
 
 interface ITimelineProps extends IUIComponent {
   date: string
@@ -35,7 +36,7 @@ export function TimelineEvent({
         {!!done ? (
           <IoIosCheckmark size={36} />
         ) : (
-          <p className={styles.unfinished}>{date}</p>
+          <p className={cn(styles.unfinished, styles.date)}>{date}</p>
         )}
       </Box>
 
@@ -52,6 +53,7 @@ export function TimelineEvent({
             className={styles.cta({
               variant
             })}
+            size="small"
           >
             DOWNLOAD
           </Button>

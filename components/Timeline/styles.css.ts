@@ -1,7 +1,8 @@
+import { breakpoints, vars } from 'site/styles/theme.css'
+
 import { recipe } from '@vanilla-extract/recipes'
 import { sprinkles } from 'site/styles/sprinkles.css'
 import { style } from '@vanilla-extract/css'
-import { vars } from 'site/styles/theme.css'
 
 export const cta = recipe({
   base: [
@@ -18,7 +19,7 @@ export const cta = recipe({
           color: 'white'
         }),
         style({
-          borderRadius: vars.border.radius.medium
+          borderRadius: vars.border.radius.small
         })
       ]
     }
@@ -33,7 +34,6 @@ export const status = recipe({
   base: [
     sprinkles({
       background: 'black_alpha_02',
-      padding: 'small',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
@@ -90,11 +90,7 @@ export const detail = recipe({
 export const timeline = recipe({
   base: [
     sprinkles({
-      // cursor: 'pointer',
-      // display: 'flex',
-      // textAlign: 'center',
-      // alignItems: 'center',
-      // width: 'full'
+      textAlign: 'center'
     }),
     style({
       display: 'flex',
@@ -104,21 +100,21 @@ export const timeline = recipe({
   ],
   variants: {
     size: {
-      // small: sprinkles({
-      //   fontSize: '-1x',
-      //   paddingX: 'small',
-      //   paddingY: 'xsmall'
-      // }),
-      // medium: sprinkles({
-      //   fontSize: '1x',
-      //   paddingX: 'medium',
-      //   paddingY: 'small'
-      // }),
-      // large: sprinkles({
-      //   fontSize: '2x',
-      //   paddingX: 'large',
-      //   paddingY: 'medium'
-      // })
+      small: sprinkles({
+        fontSize: '-1x',
+        paddingX: 'small',
+        paddingY: 'xsmall'
+      }),
+      medium: sprinkles({
+        fontSize: '1x',
+        paddingX: 'medium',
+        paddingY: 'small'
+      }),
+      large: sprinkles({
+        fontSize: '2x',
+        paddingX: 'large',
+        paddingY: 'medium'
+      })
     },
     variant: {
       normal: {}
@@ -128,10 +124,24 @@ export const timeline = recipe({
   compoundVariants: [],
 
   defaultVariants: {
-    // size: 'medium',
+    size: 'medium',
     variant: 'normal'
   }
 })
+
+export const date = [
+  sprinkles({
+    padding: 'small'
+  }),
+  style({
+    fontSize: vars.fontSize['-1x'],
+    '@media': {
+      [breakpoints.x_tablet]: {
+        fontSize: vars.fontSize['1x']
+      }
+    }
+  })
+]
 
 export const unfinished = sprinkles({
   color: 'black_alpha_06'

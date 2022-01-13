@@ -18,18 +18,16 @@ export function TimelineEvent({
   children,
   date,
   title,
+  className,
   done = false,
   variant = 'normal',
   ...rest
 }: ITimelineProps) {
   return (
     <Box
-      className={styles.timeline({
-        variant,
-        ...rest
-      })}
+      className={cn(className, styles.container)}
+      {...rest}
     >
-      {/* Done or Date */}
       <Box
         className={styles.status({
           variant
@@ -41,16 +39,13 @@ export function TimelineEvent({
           <p className={cn(styles.unfinished, styles.date)}>{date}</p>
         )}
       </Box>
-
-      {/* Title and CTA */}
       <Box
         className={styles.detail({
           variant
         })}
       >
-        <p className={done ? '' : styles.unfinished}>{title}</p>
-
-        {!!children && <Box>{children}</Box>}
+        <p className={cn({ [styles.unfinished]: !done })}>{title}</p>
+        {children}
       </Box>
     </Box>
   )

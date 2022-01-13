@@ -7,6 +7,7 @@ import { IoIosCheckmark } from 'react-icons/io'
 import cn from 'classnames'
 
 interface ITimelineProps extends IUIComponent {
+  children?: any
   date: string
   title: string
   done: boolean
@@ -14,6 +15,7 @@ interface ITimelineProps extends IUIComponent {
 }
 
 export function TimelineEvent({
+  children,
   date,
   title,
   done = false,
@@ -48,16 +50,7 @@ export function TimelineEvent({
       >
         <p className={done ? '' : styles.unfinished}>{title}</p>
 
-        {!!done && (
-          <Button
-            className={styles.cta({
-              variant
-            })}
-            size="small"
-          >
-            DOWNLOAD
-          </Button>
-        )}
+        {!!children && <Box>{children}</Box>}
       </Box>
     </Box>
   )

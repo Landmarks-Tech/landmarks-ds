@@ -6,6 +6,7 @@ import { IUIComponent } from '../../utils/types'
 import * as styles from './styles.css'
 import { Box } from '../Box'
 import { ReactElement } from 'react'
+import { SplitText } from '../SplitText'
 
 interface IProps extends IUIComponent {
   title: any
@@ -73,16 +74,6 @@ export const DesktopMenuItem = React.forwardRef(({
 
   return content
 })
-
-function SplitText({ children }: { children: string }) {
-  const [firstWord, ...otherWords] = children.split(' ')
-  return (
-    <div>
-      <Box component="p" fontSize="-1x">{firstWord}</Box>
-      <Box component="p" fontSize="2x">{otherWords.join(' ')}</Box>
-    </div>
-  )
-}
 
 function RegularTitle({ children }: { children: string }) {
   return children

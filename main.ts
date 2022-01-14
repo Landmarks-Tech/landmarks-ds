@@ -30,6 +30,7 @@ export { Tooltip } from './components/Tooltip'
 export { TimelineEvent } from './components/Timeline'
 export { Card, CardMedia } from './components/Card'
 export { CardCarousel } from './components/CardCarousel'
+export { SplitText } from './components/SplitText'
 export { DropdownMenu, DropdownMenuItem } from './components/DropdownMenu'
 export * from './components/Headings'
 

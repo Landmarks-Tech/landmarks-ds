@@ -9,28 +9,6 @@ export const container = sprinkles({
   fontFamily: 'heading',
 })
 
-export const cta = recipe({
-  base: [
-    sprinkles({
-      padding: 'small'
-    }),
-    style({})
-  ],
-  variants: {
-    variant: {
-      normal: [
-        sprinkles({
-          background: 'tertiary',
-          color: 'white'
-        }),
-        style({
-          borderRadius: vars.border.radius.small
-        })
-      ]
-    }
-  },
-})
-
 export const status = recipe({
   base: [
     sprinkles({
@@ -43,23 +21,24 @@ export const status = recipe({
     variant: {
       normal: [
         sprinkles({
-          background: 'neutral_2'
-        })
+          background: 'neutral_2',
+          textAlign: 'center',
+        }),
+        {
+          width: '80px',
+          lineHeight: '1.5',
+        }
       ]
     }
   },
-  compoundVariants: [],
-  defaultVariants: {
-    variant: 'normal'
-  }
 })
 
 export const detail = recipe({
   base: [
     sprinkles({
       display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+      justifyContent: { mobile: 'center', laptop: 'space-between' },
+      alignItems: { mobile: 'flex-start', laptop: 'center' },
     }),
     style({
       flex: 1,
@@ -69,7 +48,9 @@ export const detail = recipe({
     variant: {
       normal: [
         sprinkles({
-          padding: 'large',
+          paddingX: { mobile: 'medium', laptop: 'xlarge' },
+          paddingY: { mobile: 'medium', laptop: 'large' },
+          flexDirection: { mobile: 'column', laptop: 'row' },
           color: 'neutral_5',
           background: 'neutral_1'
         }),
@@ -81,19 +62,9 @@ export const detail = recipe({
   },
 })
 
-export const date = [
-  sprinkles({
-    padding: 'small'
-  }),
-  style({
-    fontSize: vars.fontSize['-1x'],
-    '@media': {
-      [breakpoints.x_tablet]: {
-        fontSize: vars.fontSize['1x']
-      }
-    }
-  })
-]
+export const date = sprinkles({
+  padding: 'small'
+})
 
 export const unfinished = sprinkles({
   color: 'neutral_3'

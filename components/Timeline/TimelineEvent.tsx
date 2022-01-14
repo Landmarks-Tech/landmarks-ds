@@ -5,6 +5,7 @@ import { Button } from '../Button'
 import { IUIComponent } from '../../utils/types'
 import { IoIosCheckmark } from 'react-icons/io'
 import cn from 'classnames'
+import { SplitText } from '../SplitText'
 
 interface ITimelineProps extends IUIComponent {
   children?: any
@@ -24,26 +25,19 @@ export function TimelineEvent({
   ...rest
 }: ITimelineProps) {
   return (
-    <Box
-      className={cn(className, styles.container)}
-      {...rest}
-    >
-      <Box
-        className={styles.status({
-          variant
-        })}
-      >
+    <Box className={cn(className, styles.container)} {...rest}>
+      <Box className={styles.status({
+        variant
+      })}>
         {!!done ? (
           <IoIosCheckmark size={36} />
         ) : (
-          <p className={cn(styles.unfinished, styles.date)}>{date}</p>
+          <SplitText className={cn(styles.unfinished, styles.date)}>{date}</SplitText>
         )}
       </Box>
-      <Box
-        className={styles.detail({
-          variant
-        })}
-      >
+      <Box className={styles.detail({
+        variant
+      })}>
         <p className={cn({ [styles.unfinished]: !done })}>{title}</p>
         {children}
       </Box>

@@ -4,7 +4,27 @@ import { Box } from '../Box'
 import { Container } from '../Container'
 import { IUIComponent } from '../../utils/types'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
+import { isInternalLink } from '../../utils/index'
+
+const CustomLink = (props: any) => {
+  const href = props.href
+
+  if (isInternalLink(href)) {
+    return (
+      <Link href={href}>
+        <a {...props}>{props.children}</a>
+      </Link>
+    )
+  }
+
+  return (
+    <a target="_blank" rel="noopener noreferrer" {...props}>
+      {props.children}
+    </a>
+  )
+}
 
 interface ExternalLink {
   href: string
@@ -37,7 +57,7 @@ export function Footer({
   ...rest
 }: IProps) {
   return (
-    <Box>
+    <Box className={styles.wrapper}>
       <Container>
         <Box>
           {!!logo && (
@@ -45,23 +65,49 @@ export function Footer({
               <Image src={logo} layout="fill" objectFit="cover" />
             </Box>
           )}
+
           <Box className={styles.fluidGrid}>
             <Box>
-              <hr></hr>
+              <Box>
+                .<hr className={styles.line}></hr>
+              </Box>
               <p>{description}</p>
             </Box>
             <Box>
-              <p>Contact</p>
+              <Box as="h1" className={styles.heading}>
+                Contact
+              </Box>
               <p>{address}</p>
-              <hr></hr>
-              <p>adasda@gmail.com</p>
-              <p>Callnwo</p>
+              <hr className={styles.line}></hr>
+              <p>{email}</p>
+              <p>{phone}</p>
             </Box>
             <Box>
-              <p>Projects</p>
+              <Box as="h1" className={styles.heading}>
+                Projects
+              </Box>
+              <Box className={styles.links}>
+                {projects.map((project, index) => (
+                  <CustomLink href={project.href} key={index}>
+                    {project.title}
+                  </CustomLink>
+                ))}
+              </Box>
             </Box>
-            <Box>ANPC</Box>
+            <Box>
+              <Box as="h1" className={styles.heading}>
+                Other links
+              </Box>
+              <Box className={styles.links}>
+                {links.map((link, index) => (
+                  <CustomLink href={link.href} key={index}>
+                    {link.title}
+                  </CustomLink>
+                ))}
+              </Box>
+            </Box>
           </Box>
+
           <Box as="p">
             {copyright}
             {address}

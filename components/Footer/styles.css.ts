@@ -33,3 +33,8 @@ export const line = style({
   width: vars.spacing.large,
   border: `0.75px solid ${vars.color.neutral_3}`
 })
+
+export const text = style({
+  textDecoration: 'none',
+  color: vars.color.neutral_4
+})

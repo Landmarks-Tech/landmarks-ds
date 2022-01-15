@@ -88,7 +88,11 @@ export function Footer({
               </Box>
               <Box className={styles.links}>
                 {projects.map((project, index) => (
-                  <CustomLink href={project.href} key={index}>
+                  <CustomLink
+                    href={project.href}
+                    key={index}
+                    className={styles.text}
+                  >
                     {project.title}
                   </CustomLink>
                 ))}
@@ -100,7 +104,11 @@ export function Footer({
               </Box>
               <Box className={styles.links}>
                 {links.map((link, index) => (
-                  <CustomLink href={link.href} key={index}>
+                  <CustomLink
+                    href={link.href}
+                    key={index}
+                    className={styles.text}
+                  >
                     {link.title}
                   </CustomLink>
                 ))}

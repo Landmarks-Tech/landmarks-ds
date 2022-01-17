@@ -1,11 +1,13 @@
 import * as styles from './styles.css'
 
 import { Box } from '../Box'
+import { Button } from '../Button'
 import { Container } from '../Container'
 import { IUIComponent } from '../../utils/types'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { Reveal } from '../Reveal'
 import { isInternalLink } from '../../utils/index'
 
 const CustomLink = (props: any) => {
@@ -57,11 +59,12 @@ export function Footer({
   ...rest
 }: IProps) {
   return (
-    <Box className={styles.wrapper}>
+    <Box className={styles.wrapper} {...rest}>
       <Container>
         <Box>
           {!!logo && (
             <Box position="relative" style={{ height }}>
+              {/* image? */}
               <Image src={logo} layout="fill" objectFit="cover" />
             </Box>
           )}
@@ -69,7 +72,8 @@ export function Footer({
           <Box className={styles.fluidGrid}>
             <Box>
               <Box>
-                .<hr className={styles.line}></hr>
+                {/* fix here this is just a replacement */}.
+                <hr className={styles.line}></hr>
               </Box>
               <p>{description}</p>
             </Box>
@@ -79,8 +83,21 @@ export function Footer({
               </Box>
               <p>{address}</p>
               <hr className={styles.line}></hr>
-              <p>{email}</p>
-              <p>{phone}</p>
+              <a className={styles.text} href={`mailto:${email}`}>
+                {email}
+              </a>
+              <div>
+                <Reveal
+                  onReveal={() => console.log('calling')}
+                  before={<a className={styles.text}>Call now</a>}
+                  after={
+                    <a href={`tel:${phone}`} className={styles.text}>
+                      {phone}
+                    </a>
+                  }
+                  paddingRight="medium"
+                />
+              </div>
             </Box>
             <Box>
               <Box as="h1" className={styles.heading}>

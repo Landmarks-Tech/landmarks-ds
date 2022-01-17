@@ -17,11 +17,13 @@ export const links = style({
 
 export const fluidGrid = style({
   display: 'grid',
-  // padding: '16px',
-  gap: '16px',
+  gap: vars.spacing.small,
   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))'
-  // gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 100%), 1fr)'
 })
+
+// export const description = style({
+//   gridColumn: 'span 2 / span 2'
+// })
 
 export const heading = style({
   fontFamily: vars.font.heading,

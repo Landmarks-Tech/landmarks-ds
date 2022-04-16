@@ -1,0 +1,1 @@
+export { StickyTrigger } from './StickyTrigger'

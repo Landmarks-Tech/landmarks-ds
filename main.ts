@@ -36,6 +36,7 @@ export { SlideDeck } from './components/SlideDeck'
 export { ListItem } from './components/ListItem'
 export { Footer } from './components/Footer'
 export { SmartLink } from './components/SmartLink'
+export { StickyTrigger } from './components/StickyTrigger'
 export { DropdownMenu, DropdownMenuItem } from './components/DropdownMenu'
 export { Typography } from './components/Typography'
 

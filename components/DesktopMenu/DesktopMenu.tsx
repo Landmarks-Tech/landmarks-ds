@@ -42,6 +42,7 @@ export function DesktopMenu({
   menuPlacement,
   sticky = false,
   contained = true,
+  phone,
   children,
   className,
   classes,
@@ -65,37 +66,44 @@ export function DesktopMenu({
   if (logoPlacement === 'left') {
     return (
       <Box
-        component={contained ? Container : 'section'}
+        component={contained ? Container : "section"}
         className={cls}
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        {...rest}>
+        {...rest}
+      >
         <Box
           display="flex"
-          marginRight={{ laptop: menuPlacement === 'left' ? 'large' : 'none' }}>
+          marginRight={{ laptop: menuPlacement === "left" ? "large" : "none" }}
+        >
           {logo}
           {extra}
         </Box>
         <Box
           className={styles.hideOnMobile}
           style={{
-            ...(menuPlacement === 'left') && { marginRight: 'auto' },
-            ...(menuPlacement === 'right') && { marginLeft: 'auto' },
-          }}>
+            ...(menuPlacement === "left" && { marginRight: "auto" }),
+            ...(menuPlacement === "right" && { marginLeft: "auto" }),
+          }}
+        >
           {children}
         </Box>
         <Box
           className={styles.hideOnMobile}
           display="flex"
-          marginLeft={{ laptop: menuPlacement === 'right' ? 'large' : 'none' }}>
+          marginLeft={{ laptop: menuPlacement === "right" ? "large" : "none" }}
+        >
           <LanguageSwitcher />
           <Button
             background="brand"
             borderRadius="full"
             size="medium"
+            component='a'
+            href={`tel:${phone}`}
             display="flex"
-            className={cn(styles.mainButton, mergedClasses?.button)}>
+            className={cn(styles.mainButton, mergedClasses?.button)}
+          >
             <Box component={FaPhoneAlt} marginRight="small" />
             {mergedLabels.callNow}
           </Button>
@@ -109,38 +117,46 @@ export function DesktopMenu({
 
     return (
       <Box
-        component={contained ? Container : 'section'}
+        component={contained ? Container : "section"}
         className={cls}
         display="flex"
-        justifyContent={{ mobile: 'flex-start', laptop: 'center' }}
+        justifyContent={{ mobile: "flex-start", laptop: "center" }}
         alignItems="center"
-        {...rest}>
+        {...rest}
+      >
         <Box
           display="flex"
-          marginX={{ laptop: 'xxlarge' }}
+          marginX={{ laptop: "xxlarge" }}
           style={{
-            ...(menuPlacement === 'far') && { margin: 'auto' },
+            ...(menuPlacement === "far" && { margin: "auto" }),
             order: logoOrder,
-          }}>
+          }}
+        >
           {logo}
           {extra}
         </Box>
-        {Children.map(children, (child, i) => cloneElement(child, {
-          className: cn(styles.hideOnMobile, child.props.className),
-          style: {
-            order: i < logoOrder ? i : logoOrder + 1
-          }
-        }))}
+        {Children.map(children, (child, i) =>
+          cloneElement(child, {
+            className: cn(styles.hideOnMobile, child.props.className),
+            style: {
+              order: i < logoOrder ? i : logoOrder + 1,
+            },
+          })
+        )}
         <LanguageSwitcher
           className={styles.hideOnMobile}
-          style={{ order: childCount }} />
+          style={{ order: childCount }}
+        />
         <Button
           background="brand"
           borderRadius="full"
           size="medium"
           display="flex"
+          component="a"
+          href={`tel:${phone}`}
           style={{ order: buttonOrder }}
-          className={cn(styles.mainButton, mergedClasses?.button)}>
+          className={cn(styles.mainButton, mergedClasses?.button)}
+        >
           <Box component={FaPhoneAlt} marginRight="small" />
           {mergedLabels.callNow}
         </Button>

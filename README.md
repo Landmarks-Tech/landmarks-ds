@@ -1,6 +1,6 @@
 # Design System guidelines
 
-- All components are based on <Box /> component and extend the `Atoms` interface
+- All components are based on <Box /> component and extend the `sprinkles` interface
 - All components can be customized by passing:
   - `style` prop
   - `className` prop that will be added to the container <Box />

@@ -1,6 +1,6 @@
 import { ReactElement, cloneElement, useCallback, useState } from 'react'
 
-import { Atoms } from "site/styles/sprinkles.css"
+import { sprinkles } from "site/styles/sprinkles.css"
 // @ts-ignore
 import Plx from 'react-plx'
 import { useWindowSize } from '../../main'
@@ -12,7 +12,7 @@ interface IReturnProps {
   height: number
 }
 
-interface IProps extends Atoms {
+interface IProps extends sprinkles {
   layout: 'full' | 'twothirds' | 'square'
   ratio: number
   children: ReactElement | ((size: IReturnProps) => ReactElement)

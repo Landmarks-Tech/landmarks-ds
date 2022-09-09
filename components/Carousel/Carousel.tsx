@@ -25,6 +25,7 @@ export function Carousel({
   const autoplayRef = useRef(
     Autoplay(
       { delay: autoplay ? 5000 : 1000000, stopOnInteraction: true },
+      // @ts-ignore
       (emblaRoot) => emblaRoot.parentElement
     )
   )

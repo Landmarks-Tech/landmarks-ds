@@ -86,7 +86,7 @@ export function getTotalSize(items: ISize[], rounded: boolean = true): string {
     return '0'
   }
   const total = items.reduce((acc, current) => acc + parseFloat(current.size), 0)
-  return rounded ? Math.round(total).toFixed(2) : total.toFixed(2)
+  return rounded ? Math.round(total).toFixed(0) : total.toFixed(2)
 }
 
 export function extractFirstNumber(str: string): string | null {
@@ -116,4 +116,4 @@ export function mergeUnitData(dbUnits: any, sheetUnits: any) {
   })
 }
 
-export function noop() {}
+export function noop() { }

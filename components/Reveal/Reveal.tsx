@@ -1,8 +1,8 @@
 import { useState, ReactElement } from "react"
 import { Box } from "../Box"
-import { Atoms } from "site/styles/sprinkles.css"
+import { sprinkles } from "site/styles/sprinkles.css"
 
-interface IProps extends Atoms {
+interface IProps extends sprinkles {
   onReveal: () => void
   before: ReactElement
   after: ReactElement

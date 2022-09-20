@@ -1,14 +1,14 @@
 import { createElement, AllHTMLAttributes, ElementType, Ref } from 'react'
 import cn from 'classnames'
 // import * as resetStyles from '../styles/reset.css'
-import { sprinkles, Atoms } from 'site/styles/sprinkles.css'
+import { sprinkles } from 'site/styles/sprinkles.css'
 
 export interface BoxProps
   extends Omit<
-      AllHTMLAttributes<HTMLElement>,
-      'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'size'
-    >,
-    Atoms {
+  AllHTMLAttributes<HTMLElement>,
+  'content' | 'height' | 'translate' | 'color' | 'width' | 'cursor' | 'size'
+  >,
+  sprinkles {
   component?: ElementType
   innerRef?: Ref<HTMLElement>
   [key: string]: any

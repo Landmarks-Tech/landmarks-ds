@@ -2,7 +2,7 @@ import { useState } from 'react'
 import cn from 'classnames'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 
-import { H5 } from '../Headings'
+import { H3, H5 } from '../Headings'
 import { Box } from '../Box'
 import * as styles from './styles.css'
 
@@ -28,13 +28,13 @@ export function Collapse({ title, children, defaultOpen = false }: IProps) {
         className={styles.icon}>
         {isOpen ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
       </Box>
-      <H5
+      <H3
         cursor="pointer"
         paddingRight="xxlarge"
         textTransform="capitalize"
         opacity="0.7">
         {title}
-      </H5>
+      </H3>
       <div className={styles.content}>{children}</div>
     </Box>
   )

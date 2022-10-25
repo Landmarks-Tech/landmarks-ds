@@ -2,7 +2,7 @@ import { ReactElement, Children, cloneElement } from 'react'
 import cn from 'classnames'
 import { useTranslation } from 'next-i18next'
 import { FaPhoneAlt } from 'react-icons/fa'
-
+import { CUSTOM_EVENTS, logEvent } from '../../utils/gtm'
 import { IUIComponent } from '../../utils/types'
 import { Box } from "../Box"
 import { Container } from '../Container'
@@ -100,6 +100,7 @@ export function DesktopMenu({
             borderRadius="full"
             size="medium"
             component='a'
+            onClick={() => logEvent(CUSTOM_EVENTS.SHOW_PHONE)}
             href={`tel:${phone}`}
             display="flex"
             className={cn(styles.mainButton, mergedClasses?.button)}

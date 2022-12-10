@@ -1,5 +1,5 @@
 import { useState, useCallback, ReactElement } from 'react'
-import Image, { ImageProps } from 'next/image'
+import Image, { ImageProps } from "next/legacy/image";
 import noop from 'lodash/noop'
 
 import { Box } from '../Box'

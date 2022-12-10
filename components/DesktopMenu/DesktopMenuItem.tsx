@@ -51,7 +51,7 @@ export const DesktopMenuItem = React.forwardRef(
     const processedTitle = variantHandler[variant]({ children: title })
     const content = (
       <Box
-        component="a"
+        component="span"
         innerRef={ref}
         title={title}
         className={cn(

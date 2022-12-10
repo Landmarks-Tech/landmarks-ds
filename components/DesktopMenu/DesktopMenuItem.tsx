@@ -80,10 +80,10 @@ export const DesktopMenuItem = React.forwardRef(
 
     if (href) {
       return (
-        <Link href={href} passHref>
+        <Link href={href} passHref legacyBehavior>
           {content}
         </Link>
-      )
+      );
     }
 
     return content
